@@ -1,3 +1,14 @@
+<?php
+    require "../partials/db.php";
+
+    session_start();
+
+    if(!isset($_SESSION['loggedin'])){
+
+        header("location: Admin_login.php");
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +21,12 @@
             background-image: linear-gradient(to right,#c33764 , #1d2671);
         }
         h1{
-            margin: 20px ;
             padding: 10px;
             text-align: center;
             color: darkseagreen;
+
         }
+
         .buttons{
             padding: 10px;
         }
@@ -37,16 +49,17 @@
         }
     </style>
 </head>
-<?php include "C:/xampp/htdocs/AuctionSystem/_navbar.php"; ?>
+<?php include "Admin_nav.php"; ?>
 <body>
-      <div>
+      <div style="margin-bottom: 20px; margin-top: 30px">
         <h1> ADMINISTRATOR PANEL </h1>
+          <hr style="border: 2px solid #000000; margin-left: 350px; margin-right: 350px; background: black">
       </div>
       <div class="buttons">
           <div class="d-grid gap-2 col-6 mx-auto">
-              <button class="btn btn-outline-dark" type="button" id="user">Users</button>
+              <button class="btn btn-outline-dark" type="button" id="user"><a href="user_data.php">Users</a> </button>
               <button class="btn btn-outline-info" type="button" id="auction">Auctions</button>
-              <button class="btn btn-outline-danger" type="button" id="admin">Add New Admin</button>
+              <button class="btn btn-outline-danger" type="button" id="admin"><a href="new_admin.php">Add New Admin </a></button>
           </div>
       </div>
 </body>

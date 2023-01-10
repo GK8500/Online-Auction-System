@@ -26,17 +26,6 @@
     include "C:/xampp/htdocs/AuctionSystem/partials/db.php";
     // to read all the data from table
 
-//  $server = "localhost";
-//  $username = 'root';
-//  $password = "";
-//  $database = "auction";
-//
-//  $conn = mysqli_connect($server, $username, $password, $database);
-//  if ($conn) {
-//      echo "Database connected";
-//
-//  }
-
   $sql = "SELECT * FROM `users`";
     $result = mysqli_query($conn,$sql);
     while($row = mysqli_fetch_assoc($result)){

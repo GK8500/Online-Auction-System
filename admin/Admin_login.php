@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     // The query that is to be executed.
-    $exist = "SELECT * FROM `users` WHERE username ='$username' ";
+    $exist = "SELECT * FROM `admin` WHERE username ='$username' ";
 
     $result_username = mysqli_query($conn, $exist);
     $username_check = mysqli_num_rows($result_username);
@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Only if there is one entry with the given username only then check the password. This reduces the chance of sql injections.
     if ($username_check == 1) {
         while ($row = mysqli_fetch_assoc($result_username)) {
-            if ($password == $row['u_password']) {
+            if ($password == $row['password']) {
 
                 // start session
 
@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username;
                 // reroute the page to home page
-                header("location:index.php");
+                header("location:Admin.php");
             }// if password is not correct
             else {
                 echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				</div>';
             }
         }
-}
+    }
 
     // username check
     else{
@@ -42,7 +42,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				</div>';
     }
 }
-
 ?>
 
 <!doctype html>
@@ -52,10 +51,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../cc/bg.css">
     <style>
         body{
-
+            background-image: linear-gradient(to right,#c33764 , #1d2671);
             margin: 0;
             padding: 0;
             color: #de7aef;
@@ -84,6 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         form{
             padding: 0 40px;
+            padding-bottom: 40px;
             box-sizing: border-box;
 
         }
@@ -125,43 +124,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             font-family: montserrat;
         }
 
-
-        .signin{
-            padding: 15px 5px 15px 5px;
-            text-align: center;
-        }
-
-
     </style>
     <title>login</title>
 </head>
 <body>
-<?php
-    include "../partials/_navbar.php";
-?> 
+
 <div class="containers">
-    <form action="login_1.php" method="post" autocomplete="on">
+    <form action="Admin_login.php" method="post" autocomplete="on">
         <h1 STYLE="padding: 5px; margin-right: auto; margin-left: auto">SIGN IN</h1>
         <div class="login">
-            <label for="username">
-            <input placeholder="Username" type="text" class="username" name="username">
-            </label>
+
+                <input placeholder="Username" type="text" class="username" name="username">
+
         </div>
 
         <div class="login">
-            <label for="password">
-            <input placeholder="Password" type="password" class="username" name="password">
-            </label>
+
+                <input placeholder="Password" type="password" class="username" name="password">
+
         </div>
 
         <div class="submit">
             <input type="submit" class="submits" value="login">
         </div>
-        <div class="signin">
-            <a href="Signup.php">Don't have an account ? Sign up</a>
-        </div>
-        <div class="admin" style="padding-top: 5px; text-align: center; padding-bottom:5px ">
-            <a href="../admin/Admin_login.php">Login as Admin</a>
+        <div class="signin" style="text-align: center; padding-bottom: 5px; padding-top: 10px">
+            <a href="../buyer/login_1.php">Login as a user</a>
         </div>
     </form>
 </div>
