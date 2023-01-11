@@ -20,7 +20,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="index.php">Home</a>
+                <a class="nav-link" href="../buyer/index.php">Home</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,20 +37,20 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="product_registration.php">Sell</a>
+                <a class="nav-link" href="../seller/product_registration.php">Sell</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="about.php">About Us</a>
+                <a class="nav-link" href="../buyer/about.php">About Us</a>
             </li>
 
             <div class="float-right" style="text-align:right">
                 <li class="nav-item">
-                    <a class="nav-link" href="login_1.php" >Sign In</a>
+                    <a class="nav-link" href="../buyer/login_1.php" >Sign In</a>
                 </li>
             </div><div class="float-right" style="text-align:right">
                 <li class="nav-item">
-                    <a class="nav-link" href="logout.php" >Logout</a>
+                    <a class="nav-link" href="../buyer/logout.php" >Logout</a>
                 </li>
             </div>
         </ul>

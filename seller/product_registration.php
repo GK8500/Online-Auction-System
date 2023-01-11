@@ -1,3 +1,14 @@
+<?php
+
+    require "../partials/db.php";
+    session_start();
+    if(!isset($_SESSION['loggedin'])){
+        header("location: login.php");
+        exit;
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +45,7 @@
 </head>
 
 <body>
-<?php  include "../partials/_navbar.php"; ?>
+
 
 <div class="containers" style="display: flex; justify-content: center; margin-top:100px">
 
