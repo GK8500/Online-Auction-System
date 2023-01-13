@@ -1,3 +1,7 @@
+<?php
+include "../partials/db.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +9,9 @@
     <title>Seller Dashboard</title>
 </head>
 <body>
-
+<?php
+include "seller_nav.php";
+?>
 
 
 </body>

@@ -26,7 +26,7 @@
     include "C:/xampp/htdocs/AuctionSystem/partials/db.php";
     // to read all the data from table
 
-  $sql = "SELECT * FROM `users`";
+    $sql = "SELECT * FROM `users`";
     $result = mysqli_query($conn,$sql);
     while($row = mysqli_fetch_assoc($result)){
     echo "<tr>

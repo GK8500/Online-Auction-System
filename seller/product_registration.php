@@ -6,7 +6,25 @@
         header("location: login.php");
         exit;
     }
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
+        $name = $_POST['name'];
+        $desc = $_POST['desc'];
+        $price = $_POST['price'];
+        $category = $_POST['category'];
+        $start = $_POST['starttime'];
+        $end = $_POST['endtime'];
+
+        $sql = "INSERT INTO `products` (`id`, `name`, `description`, `msp`, `catogary`, `bidstart`, `bidend`) VALUES (NULL, '$name', '$desc', '$price', '$category', '$start', '$end')";
+        $result = mysqli_query($conn,$sql);
+        if($result){
+            echo '
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Congratulations!</strong> New product added.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +68,7 @@
 <div class="containers" style="display: flex; justify-content: center; margin-top:100px">
 
 
-    <form action="" autocapitalize="on" autocomplete="on" method="get">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" autocapitalize="on" autocomplete="on" method="POST">
     <div class="item">
         <h1 style="text-align: center; padding: 15px"> PRODUCT REGISTRATION</h1>
         <hr>
@@ -86,7 +104,7 @@
             <tr>
                 <th>Choose a category for your product:</th>
                 <td>
-                    <select id="categories" name="categories">
+                    <select id="categories" name="category">
                       <option value="Appliances">Home Appliances</option>
                       <option value="Shoes">Shoes</option>
                       <option value="Cars">Cars</option>
