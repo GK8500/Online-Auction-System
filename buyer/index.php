@@ -57,99 +57,39 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-
+    <div class='row'>
 <?php
-$sql = "SELECT * FROM `products` WHERE `id` = '1'";
-$result = mysqli_query($conn,$sql);
 
-// selecting a certain product
+// boundry condition for the loop
+for ($i = 1; $i < 40 ; ++$i){
+    $sql = "SELECT * FROM `products` WHERE `id` = '$i'";
+    $result = mysqli_query($conn, $sql);
 
-while($row = mysqli_fetch_assoc($result)){
+    // selecting a certain product
+
+    while ($row = mysqli_fetch_assoc($result)) {
+
 ?>
 
-            <div class='row'>
+
     <div class='col-sm-3'>
     <div class='card' style='width: 18rem; margin: 20px 20px; left: 10px'>
       <img src='https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1000_.jpg' class='card-img-top' alt='' style= 'height:200px; width:250px'>
       <div class='card-body'>
-        <h5 class'=card-title'> <?php $row['name'] ?> </h5>
+       <u> <h5 class'=card-title'> <?php echo $row['name']; ?> </h5></u>
         <p class='card-text'><?php echo $row['description']; ?></p>
-        <a href='#' class='btn btn-primary'>Go somewhere</a>
+        <p class='card-text'>Rs <?php echo $row['msp']; ?></p>
+        <a href='#' class='btn btn-primary'>BID</a>
       </div>
     </div>
     </div>
 
 
-<?php } ?>
- <div class="col-sm-3">
-    <div class="card" style="width: 18rem; margin-left: 10px; margin-top:20px;margin-right:10px;margin-bottom:20px;">
-      <img src="https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1000_.jpg" class="card-img-top" alt="..." style= "height:200px; width:250px">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    </div>
- <div class="col-sm-3">
-    <div class="card" style="width: 18rem; margin-left: 10px; margin-top:20px;margin-right:10px;margin-bottom:20px;">
-      <img src="https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1000_.jpg" class="card-img-top" alt="..." style= "height:200px; width:250px">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    </div>
- <div class="col-sm-3">
-    <div class="card" style="width: 18rem; margin-left: 10px; margin-top:20px;margin-right:10px;margin-bottom:20px;">
-      <img src="https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1000_.jpg" class="card-img-top" alt="..." style= "height:200px; width:250px">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    </div>
- <div class="col-sm-3">
-    <div class="card" style="width: 18rem; margin-left: 10px; margin-top:20px;margin-right:10px;margin-bottom:20px;">
-      <img src="https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1000_.jpg" class="card-img-top" alt="..." style= "height:200px; width:250px">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    </div>
- <div class="col-sm-3">
-    <div class="card" style="width: 18rem; margin-left: 10px; margin-top:20px;margin-right:10px;margin-bottom:20px;">
-      <img src="https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1000_.jpg" class="card-img-top" alt="..." style= "height:200px; width:250px">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    </div>
- <div class="col-sm-3">
-    <div class="card" style="width: 18rem; margin-left: 10px; margin-top:20px;margin-right:10px;margin-bottom:20px;">
-      <img src="https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1000_.jpg" class="card-img-top" alt="..." style= "height:200px; width:250px">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-    </div>
- <div class="col-sm-3">
-    <div class="card" style="width: 18rem; margin-left: 10px; margin-top:20px;margin-right:10px;margin-bottom:20px;">
-      <img src="https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1000_.jpg" class="card-img-top" alt="..." style= "height:200px; width:250px">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+
+<?php }
+}
+?>
+
     </div>
 
 </body>

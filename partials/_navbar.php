@@ -27,8 +27,8 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Home Appliances</a></li>
                     <li><a class="dropdown-item" href="#">Home Decor</a></li>
-                    <li><a class="dropdown-item" href="#">Laptop/Mobile Phones/Watches</a></li>
-                    <li><a class="dropdown-item" href="#">Bikes</a></li>
+                    <li><a class="dropdown-item" href="#">Electronics</a></li>
+                    <li><a class="dropdown-item" href="#">Watches</a></li>
                     <li><a class="dropdown-item" href="#">Cars</a></li>
                     <li><a class="dropdown-item" href="#">Coins & Currency</a></li>
                     <li><a class="dropdown-item" href="#">Others</a></li>
