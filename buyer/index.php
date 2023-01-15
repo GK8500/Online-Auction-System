@@ -79,7 +79,7 @@ for ($i = 1; $i < 40 ; ++$i){
        <u> <h5 class'=card-title'> <?php echo $row['name']; ?> </h5></u>
         <p class='card-text'><?php echo $row['description']; ?></p>
         <p class='card-text'>Rs <?php echo $row['msp']; ?></p>
-        <a href='#' class='btn btn-primary'>BID</a>
+        <a href='product_display.php?productId=<?php echo $row['id']; ?>'< class='btn btn-primary'>BID</a>
       </div>
     </div>
     </div>
