@@ -63,7 +63,9 @@
 </head>
 
 <body>
-
+<?php
+include "seller_nav.php";
+?>
 
 <div class="containers" style="display: flex; justify-content: center; margin-top:100px">
 

@@ -20,20 +20,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="../buyer/index.php">Home</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Categories
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Home Appliances</a></li>
-                    <li><a class="dropdown-item" href="#">Home Decor</a></li>
-                    <li><a class="dropdown-item" href="#">Laptop/Mobile Phones/Watches</a></li>
-                    <li><a class="dropdown-item" href="#">Bikes</a></li>
-                    <li><a class="dropdown-item" href="#">Cars</a></li>
-                    <li><a class="dropdown-item" href="#">Coins & Currency</a></li>
-                    <li><a class="dropdown-item" href="#">Others</a></li>
-                </ul>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="../seller/product_registration.php">Sell</a>
             </li>
@@ -41,11 +28,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="../buyer/about.php">About Us</a>
             </li>
-
+<?php       if(!isset($_SESSION['loggedin'])){
+             ?>
             <div class="float-right" style="text-align:right">
                 <li class="nav-item">
                     <a class="nav-link" href="../buyer/login_1.php" >Sign In</a>
                 </li>
+
+            <?php } ?>
             </div><div class="float-right" style="text-align:right">
                 <li class="nav-item">
                     <a class="nav-link" href="../buyer/logout.php" >Logout</a>
