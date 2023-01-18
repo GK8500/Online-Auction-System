@@ -25,13 +25,13 @@
                     Categories
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Home Appliances</a></li>
-                    <li><a class="dropdown-item" href="#">Home Decor</a></li>
-                    <li><a class="dropdown-item" href="#">Electronics</a></li>
-                    <li><a class="dropdown-item" href="#">Watches</a></li>
-                    <li><a class="dropdown-item" href="#">Cars</a></li>
-                    <li><a class="dropdown-item" href="#">Coins & Currency</a></li>
-                    <li><a class="dropdown-item" href="#">Others</a></li>
+                    <li><a class="dropdown-item" href="../category/applainces.html">Home Appliances</a></li>
+                    <li><a class="dropdown-item" href="../category/.html">Home Decor</a></li>
+                    <li><a class="dropdown-item" href="../category/electronics.html">Electronics</a></li>
+                    <li><a class="dropdown-item" href="../category/watches.html">Watches</a></li>
+                    <li><a class="dropdown-item" href="../category/cars.html">Cars</a></li>
+                    <li><a class="dropdown-item" href="../category/coins.html">Coins & Currency</a></li>
+                    <li><a class="dropdown-item" href="../category/applainces.html">Others</a></li>
                 </ul>
             </li>
             <li class="nav-item">

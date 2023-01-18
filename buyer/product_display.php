@@ -1,14 +1,14 @@
 <?php
 include "../partials/db.php";
-    $productId = $_REQUEST['productId'];
-    $sql = "SELECT * FROM `products` WHERE `id` = $productId";
+    $id = $_GET['pId'];
+    $sql = "SELECT * FROM `products` WHERE `id` = $id";
     $result = mysqli_query($conn, $sql);
     session_start();
     if(!isset($_SESSION['loggedin'])){
         header("location: login.php");
         exit;
     }
-while ($row = mysqli_fetch_assoc($result)) {
+$row = mysqli_fetch_assoc($result);
 ?>
 
 </html>
@@ -46,7 +46,8 @@ while ($row = mysqli_fetch_assoc($result)) {
         <div class="col-lg-6 col-sm-6">
             <h6><?php echo $row['catogary']; ?></h6>
             <h1><?php echo $row['name']; ?></h1>
-            <p><?php echo $row['description']; ?> </p>
+<!--// substr is used to cut down the number of cahrecters displayd in a certain area-->
+            <p><?php $str =$row['description'];  substr($str, 2, 10) ; ?> </p>
             <hr>
 
             <div class="cable">
@@ -55,23 +56,23 @@ while ($row = mysqli_fetch_assoc($result)) {
 
             </div>
             <hr>
-            <form action="product_display.php" method="POST">
+            <form action="product_display.php?pId=<?php echo $id;?>" method="POST">
             <span style="padding-right: 6px;"><input name="price" required="required" type="number"></span>
             <?PHP
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $price = $_POST['price'];
                 if($price > $row['msp']){
-                    $sql = "UPDATE `products` SET `msp` = '$price' WHERE `products`.`id` = 6";
+                    $sql = "UPDATE `products` SET `msp` = '$price' WHERE `products`.`id` = $id";
                     $result = mysqli_query($conn, $sql);
                 }}
              ?>
-            <input type="submit" class="btn btn-success value="Bid">Bid</input>
-            </form>
 
+
+            <input type="submit" class="btn btn-success value="Bid">Bid</input>
+
+
+            </form>
         </div>
     </div>
     </body>
     </html>
-<?php  }
- ;
-    ?>
