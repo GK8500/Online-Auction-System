@@ -66,3 +66,13 @@ if(!isset($_SESSION['loggedin'])){
 <?php }
 
 ?>
+<?php
+$date1 = date("Y-m-d");
+$date2 = $row['bidstart'];
+if($date1<$date2 ){
+    echo "works";
+}
+else if($date1 > $date2){
+    echo "Not works";
+}
+?>

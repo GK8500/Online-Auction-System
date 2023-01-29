@@ -46,7 +46,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../buyer/login_1.php" >Sign In</a>
                 </li>
-            </div><div class="float-right" style="text-align:right">
+            </div>
+            <div class="float-right" style="text-align:right">
                 <li class="nav-item">
                     <a class="nav-link" href="../buyer/logout.php" >Logout</a>
                 </li>
