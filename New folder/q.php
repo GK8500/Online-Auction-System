@@ -12,7 +12,7 @@ if(!isset($_SESSION['loggedin'])){
 
 
 
-    $sql = "SELECT * FROM `products` WHERE `id` = '1'";
+    $sql = "SELECT * FROM `product` WHERE `id` = '1'";
     $result = mysqli_query($conn,$sql);
 
     // selecting a certain product

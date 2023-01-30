@@ -1,7 +1,7 @@
 <?php
 include "../partials/db.php";
 $id = $_GET['pId'];
-$sql = "SELECT * FROM `products` WHERE `id` = $id";
+$sql = "SELECT * FROM `product` WHERE `id` = $id";
 $result = mysqli_query($conn, $sql);
 session_start();
     $user = $_SESSION['username'];
@@ -13,7 +13,6 @@ if (!isset($_SESSION['loggedin'])) {
 $row = mysqli_fetch_assoc($result);
 ?>
 
-</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,8 +54,8 @@ $row = mysqli_fetch_assoc($result);
         <h6><?php echo $row['catogary']; ?></h6>
         <h1><?php echo $row['name']; ?></h1>
 <!-- substr is used to cut down the number of cahrecters displayd in a certain area-->
-        <p><?php $str = $row['description'];
-            substr($str, 2, 10); ?> </p>
+        <p><?php echo $row['description']; ?> </p>
+
         <hr>
 
         <div class="cable">
@@ -74,12 +73,12 @@ $row = mysqli_fetch_assoc($result);
 // checking if the bidding price is higher than the last one
 
                 if ($price > $row['msp']) {
-                    $sql = "UPDATE `products` SET `msp` = '$price' WHERE `products`.`id` = $id";
+                    $sql = "UPDATE `product` SET `msp` = '$price' WHERE `product`.`id` = $id";
                     $result = mysqli_query($conn, $sql);
 
 // Adding the highest bidder to the table
 
-                    $sql = "UPDATE `products` SET `user_id` = '$user' WHERE `products`.`id` = $id";
+                    $sql = "UPDATE `product` SET `username` = '$user' WHERE `product`.`id` = $id";
                     $result = mysqli_query($conn, $sql);
 
                 }

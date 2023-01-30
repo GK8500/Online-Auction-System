@@ -15,7 +15,7 @@
         $start = $_POST['starttime'];
         $end = $_POST['endtime'];
 
-        $sql = "INSERT INTO `products` (`id`, `name`, `description`, `msp`, `catogary`, `bidstart`, `bidend`) VALUES (NULL, '$name', '$desc', '$price', '$category', '$start', '$end')";
+        $sql = "INSERT INTO `product` (`id`, `name`, `description`, `msp`, `catogary`, `bidstart`, `bidend`) VALUES (NULL, '$name', '$desc', '$price', '$category', '$start', '$end')";
         $result = mysqli_query($conn,$sql);
         if($result){
             echo '

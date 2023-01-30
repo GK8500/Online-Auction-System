@@ -59,7 +59,7 @@
     </div>
     <div class='row'>
 <?php
-    $sql = "SELECT * FROM `products`";
+    $sql = "SELECT * FROM `product`";
     $result = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($result);
     if($num>0) {
