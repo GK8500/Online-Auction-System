@@ -66,16 +66,6 @@
         while ($row = mysqli_fetch_assoc($result)) {
 
 
-
-
-
-// boundry condition for the loop
-//for ($i = 1; $i < 40 ; ++$i){
-//
-//    // selecting a certain product
-//
-//    while ($row = mysqli_fetch_assoc($result)) {
-
 ?>
 
 
@@ -87,13 +77,33 @@
         <p class='card-text'><?php echo $row['description']; ?></p>
         <p class='card-text'>Rs <?php echo $row['msp']; ?></p>
 <!-- productId ???????-->
-        <a href='product_display.php?pId=<?php echo $row['id']; ?>'< class='btn btn-primary'>BID</a>
+
+          <?php
+
+          // checking if bid needs to be started or ended
+
+          $today = date("Y-m-d");   // today's date
+          $bidday = $row['bidstart'];      // check if the date to start the bid has arrived
+          $bidend = $row['bidend'];       // check if the date to end the bid has arrived
+
+
+          if($today<$bidday){
+          ?>
+              <a href='#' class='btn btn-primary disabled'>Bid Not Started Yet</a>
+
+          <?php }
+          else if($today >= $bidday && $today<$bidend ){
+              ?>
+              <a href='product_display.php?pId=<?php echo $row['id']; ?>'< class='btn btn-primary'>BID</a>
+              <?php
+          }
+          else if($today>$bidend ){
+              ?>
+              <a href='#' class='btn btn-danger disabled'>Sold out</a>
+          <?php } ?>
       </div>
     </div>
     </div>
-
-
-
 <?php }
 }
 ?>
