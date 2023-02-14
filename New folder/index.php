@@ -1,6 +1,6 @@
 
 <?php
-    require "./partials/db.php";
+    require "../partials/db.php";
 
     session_start();
 
@@ -27,7 +27,7 @@
 <body>
     
     <?php
-    include "_navbar.php";
+    include "../partials/_navbar.php";
     ?>
 
 <?php // carousel ?>

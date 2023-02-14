@@ -8,14 +8,20 @@
     }
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
+        // Seller ID needs to be inserted in the product table as well
+        // Use $_SESSION['username']
+
+
+
         $name = $_POST['name'];
         $desc = $_POST['desc'];
         $price = $_POST['price'];
         $category = $_POST['category'];
         $start = $_POST['starttime'];
         $end = $_POST['endtime'];
+        $seller = $_SESSION['user_id'];
 
-        $sql = "INSERT INTO `product` (`id`, `name`, `description`, `msp`, `catogary`, `bidstart`, `bidend`) VALUES (NULL, '$name', '$desc', '$price', '$category', '$start', '$end')";
+        $sql = "INSERT INTO `product` (`id`,`sold_by` ,`name`, `description`, `msp`, `catogary`, `bidstart`, `bidend`, `status`) VALUES (NULL, '$seller' ,'$name', '$desc', '$price', '$category', '$start', '$end', 'LISTED')";
         $result = mysqli_query($conn,$sql);
         if($result){
             echo '
@@ -108,9 +114,9 @@ include "seller_nav.php";
                 <td>
                     <select id="categories" name="category">
                       <option value="Appliances">Home Appliances</option>
-                      <option value="Shoes">Shoes</option>
-                      <option value="Cars">Cars</option>
-                      <option value="Bikes">Bikes</option>
+                      <option value="Shoes">Fashion</option>
+                      <option value="Cars">Vehicals</option>
+                      <option value="Bikes">Jwellery</option>
                       <option value="Coins">Coins & Currency</option>
                       <option value="Decor">Home Decor</option>
                       <option value="Gadgets">Laptop/Mobile Phones/Watches</option>

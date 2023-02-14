@@ -8,6 +8,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
+
     // The query that is to be executed.
     $exist = "SELECT * FROM `seller` WHERE username ='$username' ";
 
@@ -24,6 +25,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username;
+                $_SESSION['user_id'] = $row['id'];
+
+
                 // reroute the page to home page
                 header("location:Seller_dash.php");
             }// if password is not correct

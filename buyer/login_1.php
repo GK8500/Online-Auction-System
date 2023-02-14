@@ -24,6 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username;
+                $_SESSION['user_id'] = $row['user_id'];
                 // reroute the page to home page
                 header("location:index.php");
             }// if password is not correct

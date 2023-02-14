@@ -38,15 +38,17 @@ foreach($row as $x => $x_value) {
 
 </head>
 <body>
-<?php include "../partials/_navbar.php"; ?>
+<?php //include "../partials/_navbar.php"; ?>
 <div class='row'>
     <div class='col-sm-3'>
         <div class='card' style='width: 18rem; margin: 20px 20px; left: 10px'>
-            <img src='https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1000_.jpg' class='card-img-top' alt=''
-                 style='height:200px; width:250px'>
+            <img src='../seller/uploads/test.jpg' class='card-img-top' alt=''
+                 style='height:200px; width:250px' />
             <div class='card-body'>
-                <h5 class'=card-title' name='name'> <?php echo $row['name']; ?> </h5>
-                <p class='card-text'><?php echo $row['description']; ?></p>
+                <h5 class='card-title' name='name' > <?php echo $row['name']; ?> </h5>
+                <p class='card-text'><?php echo $row['description'];
+                
+                ?></p>
                 <?php
                 $today = date("Y-m-d");
                 $bidday = $row['bidstart'];
@@ -56,7 +58,7 @@ foreach($row as $x => $x_value) {
                 <a href='#' class='btn btn-primary disabled'>Bid Not Started Yet</a> <?php }
                 else if($today >= $bidday && $today<$bidend ){
                 ?>
-                    <a href='product_display.php?pId=<?php echo $row['id']; ?>'< class='btn btn-primary'>BID</a>
+                    <a href='product_display.php?pId=<?php echo $row['id']; ?>'>< class='btn btn-primary'>BID</a>
                 <?php
                 }
                 else if($today>$bidend ){
