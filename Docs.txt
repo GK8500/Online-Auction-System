@@ -1,0 +1,8 @@
+myBids.php need the layout of cart.php
+Navbar needs to be made specific to the conditions.
+CSS needs to be corrected.
+Hashing is needed.
+Prepared statement should be added.
+Other security features.
+Proper pages for each category
+about page 

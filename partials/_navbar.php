@@ -33,7 +33,7 @@
                     <li><a class="dropdown-item" href="../category/applainces.php">Appliances</a></li>
                     <li><a class="dropdown-item" href="../category/decor.html">Home Decor</a></li>
                     <li><a class="dropdown-item" href="../category/electronics.php">Electronics</a></li>
-                    <li><a class="dropdown-item" href="../category/fashion.html">Fashion</a></li>
+                    <li><a class="dropdown-item" href="../category/fashion.php">Fashion</a></li>
                     <li><a class="dropdown-item" href="../category/watches.php">Watches</a></li>
                     <li><a class="dropdown-item" href="../category/cars.php">Cars & Bikes</a></li>
                     <li><a class="dropdown-item" href="../category/coins.php">Coins & Currency</a></li>

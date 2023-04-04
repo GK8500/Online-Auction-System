@@ -1,6 +1,13 @@
 <?php
     include "../partials/db.php";
 
+session_start();
+
+if(!isset($_SESSION['loggedin'])){
+
+    header("location: login_1.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,69 +26,50 @@
         echo"<br>";
         echo"<br>";
         echo"<br>";
+    $usernames =  $_SESSION['username'];
+    $sql = "SELECT product.*, product_image.path imagepath, product_image.sortorder pic_no FROM product left join product_image on product.id = product_image.product_id AND username ='$usernames'";
+    $result = mysqli_query($conn,$sql);
+
+$num = mysqli_num_rows($result);
+
+if($num>0) {
+while ($row = mysqli_fetch_assoc($result)) {
+$id = $row['id'];           // id added
+
+?>
+<div class='card' style='width: 18rem; margin: 20px 20px; left: 10px'>
+    <?php
+    // check if the product has already been displayed
+    if($row['pic_no'] == 1){
+
+    // if image path is given
+
+    if($row['imagepath'] != null){
+
         ?>
-<div class="row">
+        <img src=<?php echo $row['imagepath'] ?> class='card-img-top' alt='' style='height:200px; width:250px'>
+    <?php }
 
-<div class="card mb-3 ms-3" style="max-width: 540px; margin-left:10px">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://media.wired.com/photos/5fb2cc575c9914713ead03de/1:1/w_1358,h_1358,c_limit/Gear-Apple-MacBook-Air-top-down-SOURCE-Apple.jpg" class="img-fluid rounded-start" alt="..." style = "height:170px; width:300px;">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">LAPTOP</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div>
+    // if image path is not given
 
-
-<div class="card mb-3 ms-3" style="max-width: 540px; margin-left:10px">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://media.wired.com/photos/5fb2cc575c9914713ead03de/1:1/w_1358,h_1358,c_limit/Gear-Apple-MacBook-Air-top-down-SOURCE-Apple.jpg" class="img-fluid rounded-start" alt="..." style = "height:170px; width:300px;">
+    else{
+        ?>
+        <img src='https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1000_.jpg' class='card-img-top' alt='' style= 'height:200px; width:250px'>
+    <?php } ?>
+    <div class='card-body'>
+        <u> <h5 class= 'card-title'> <?php echo $row['name']; ?> </h5></u>
+        <p class='card-text'><?php  $string = $row['description'];
+            $stringCut = substr($string,0,100);
+            echo $stringCut.'....';
+            ?></p>
+        <p class='card-text'>Rs <?php echo $row['msp']; ?> </p>
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">LAPTOP</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<div class="card mb-3 ms-3" style="max-width: 540px; margin-left:10px">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://media.wired.com/photos/5fb2cc575c9914713ead03de/1:1/w_1358,h_1358,c_limit/Gear-Apple-MacBook-Air-top-down-SOURCE-Apple.jpg" class="img-fluid rounded-start" alt="..." style = "height:170px; width:300px;">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">LAPTOP</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="card mb-3 ms-3" style="max-width: 540px; margin-left:10px">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://media.wired.com/photos/5fb2cc575c9914713ead03de/1:1/w_1358,h_1358,c_limit/Gear-Apple-MacBook-Air-top-down-SOURCE-Apple.jpg" class="img-fluid rounded-start" alt="..." style = "height:170px; width:300px;">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">LAPTOP</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
 </div>
 
+<?php
+} }
+}
+?>
 
 </body>
 </html>
