@@ -155,10 +155,11 @@ echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
         <div class="submit">
             <input type="submit" class="submits" value="login">
         </div>
-        <div class="login_sell" style="text-align: center; padding-bottom: 5px; padding-top: 10px;">
-            <button type="button" class="btn btn-light" data-bs-toggle="button"><a href="signup.php" >Become a seller</a></button>
 
+        <div class="login_sell" style="text-align: center; padding-bottom: 5px; padding-top: 10px; color:#131315">
+            <button type="button" ><a href="signup.php" >Become a seller</a></button>
         </div>
+
         <div class="signin" style="text-align: center; padding-bottom: 5px; padding-top: 10px">
             <a href="../buyer/login_1.php">Login as a user</a>
         </div>

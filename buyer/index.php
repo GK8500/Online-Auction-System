@@ -17,19 +17,19 @@ if (!isset($_SESSION['loggedin'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+
   <link rel="stylesheet" href="../cc/bg.css">
   <title>Home</title>
 
   <style>
     body {
       height: fit-content;
-      width: 100rem;
-      background-color: red;
+      width: 100%;
+      /* background-color: red; */
       /* For browsers that do not support gradients */
       background-image: linear-gradient(to right, #ee7752, #e73c7e, #9581F4, #23a6d5, #23d5ab);
-      background-size: fill;
+      background-size: cover;
     }
 
     body {
@@ -85,9 +85,69 @@ if (!isset($_SESSION['loggedin'])) {
 
     }
 
-    
-  </style>
-  </style>
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
 
 </head>
 
@@ -97,124 +157,168 @@ if (!isset($_SESSION['loggedin'])) {
   include "../partials/_navbar.php";
   ?>
 
-<div id="carouselExampleIndicators" class="carousel slide" style="padding-left: 10px; padding-right:10px; padding-top:10px;margin-top:60px">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRefjw2AQNtBmWDlM8YhZR7ymmycLH-2ziNWg&usqp=CAU" class="d-block w-100" alt="..." style="height: 300px;width : 50% ;margin-left:20px">
-        </div>
-        <div class="carousel-item">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRefjw2AQNtBmWDlM8YhZR7ymmycLH-2ziNWg&usqp=CAU" class="d-block w-100" alt="..." style="height: 300px;width : 50% ;margin-left:20px">
-        </div>
-        <div class="carousel-item">
-          <img src="data:image/png;base64,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" class="d-block w-100" alt="..." style="height: 300px;width : 50%; margin-left:20px">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+  <!-- <div id="carouselExampleIndicators" class="carousel slide" style="padding-left: 10px; padding-right:10px; padding-top:10px;margin-top:60px">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRefjw2AQNtBmWDlM8YhZR7ymmycLH-2ziNWg&usqp=CAU" class="d-block w-100" alt="..." style="height: 300px;width : 50% ;margin-left:20px">
+      </div>
+      <div class="carousel-item">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRefjw2AQNtBmWDlM8YhZR7ymmycLH-2ziNWg&usqp=CAU" class="d-block w-100" alt="..." style="height: 300px;width : 50% ;margin-left:20px">
+      </div>
+      <div class="carousel-item">
+        <img src="data:image/png;base64,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" class="d-block w-100" alt="..." style="height: 300px;width : 50%; margin-left:20px">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div> -->
+
+  <div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 3</div>
+      <img src="https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067__340.png" style="width:100%">
+      <div class="text">Caption Text</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 3</div>
+      <img src="https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067__340.png" style="width:100%">
+      <div class="text">Caption Two</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img src="https://cdn.pixabay.com/photo/2012/08/27/14/19/mountains-55067__340.png" style="width:100%">
+      <div class="text">Caption Three</div>
+    </div>
+    
+    </div>
+    <br>
+    
   
 
-    <?php
+  <?php
 
-    $sql = "SELECT product.*, product_image.path imagepath, product_image.sortorder pic_no FROM product left join product_image on product.id = product_image.product_id";
-    $result = mysqli_query($conn, $sql);
+  $sql = "SELECT product.*, product_image.path imagepath, product_image.sortorder pic_no FROM product left join product_image on product.id = product_image.product_id";
+  $result = mysqli_query($conn, $sql);
 
-    $num = mysqli_num_rows($result);
+  $num = mysqli_num_rows($result);
 
-    if ($num > 0) {
-      while ($row = mysqli_fetch_assoc($result)) {
-        $id = $row['id'];           // id added
+  if ($num > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      $id = $row['id'];           // id added
 
-    ?>
-        <?php
-        // check if the product has already been displayed
-        if ($row['pic_no'] == 1) {
+  ?>
+      <?php
+      // check if the product has already been displayed
+      if ($row['pic_no'] == 1) {
 
-          // if image path is given
+        // if image path is given
 
-          if ($row['imagepath'] != null) {
-
-
-
-        ?>
-            <div class="cards">
-              <header>
-                <img src=<?php echo $row['imagepath'] ?> class='card-img-top' alt='' style='height:200px; width:250px'>
-              <?php }
-            // if image path is not given
-
-            else {
-              ?>
-                <img src='https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1000_.jpg' class='card-img-top' alt='' style='height:200px; width:250px'>
-              <?php } ?>
-              <H3> <?php echo $row['name']; ?></H3>
-              </header>
-              <div class="body">
-                <p class='card-text'><?php $string = $row['description'];
-                                      $stringCut = substr($string, 0, 100);
-                                      echo $stringCut . '....';
-                                      ?></p>
-                <p class='card-text'> </p>
-
-              </div>
-              <br>
-              <!-- <div class="d-grid gap-2"> -->
-                <!-- <button class="btn btn-primary" type="button" style="justify-content: center;">BID Rs <?php echo $row['msp']; ?></button> -->
-              <!-- </div> -->
-              <?php
-
-              // checking if bid needs to be started or ended
-
-              $today = date("Y-m-d");    // today's date
-              $bidday = $row['bidstart'];      // check if the date to start the bid has arrived
-              $bidend = $row['bidend'];        // check if the date to end the bid has arrived
+        if ($row['imagepath'] != null) {
 
 
-              if ($today < $bidday) {
-                $sql_status = "UPDATE `product` SET `status` = 'not started' WHERE `product`.`id` = $id";        // updating status
-                $result_status = mysqli_query($conn, $sql);
-              ?>
-                <a href='#' class='btn btn-primary disabled'>Bid Not Started Yet</a>
 
-              <?php } else if ($today >= $bidday && $today < $bidend) {
-                $sql_status = "UPDATE `product` SET `status` = 'on sale' WHERE `product`.`id` = $id";        // updating status
-                $result_status = mysqli_query($conn, $sql);
-              ?>
-                <a href='product_display.php?pId=<?php echo $row['id']; ?>' < class='btn btn-primary'>BID</a>
-              <?php
-              } else if ($today > $bidend) {
-                $sql_status = "UPDATE `product` SET `status` = 'sold' WHERE `product`.`id` = $id";  // updating status
-                $result_status = mysqli_query($conn, $sql);
-              ?>
-                <a href='product_display.php?pId=<?php echo $row['id']; ?>' class='btn btn-danger '>Sold out</a>
-              <?php } ?>
+      ?>
+
+     
+
+          <div class="cards">
+            <header>
+              <img src=<?php echo $row['imagepath'] ?> class='card-img-top' alt='' style='height:200px; width:250px'>
+            <?php }
+          // if image path is not given
+
+          else {
+            ?>
+              <img src='https://m.media-amazon.com/images/I/61Dw5Z8LzJL._SL1000_.jpg' class='card-img-top' alt='' style='height:200px; width:250px'>
+            <?php } ?>
+            <H3> <?php echo $row['name']; ?></H3>
+            </header>
+            <div class="body">
+              <p class='card-text'><?php $string = $row['description'];
+                                    $stringCut = substr($string, 0, 100);
+                                    echo $stringCut . '....';
+                                    ?></p>
+              <p class='card-text'> </p>
+
             </div>
-  </div>
+            <br>
+            <?php
+
+            // checking if bid needs to be started or ended
+
+            $today = date("Y-m-d");    // today's date
+            $bidday = $row['bidstart'];      // check if the date to start the bid has arrived
+            $bidend = $row['bidend'];        // check if the date to end the bid has arrived
 
 
-  </div>
-<?php
-        }
+            if ($today < $bidday) {
+              $sql_status = "UPDATE `product` SET `status` = 'not started' WHERE `product`.`id` = $id";        // updating status
+              $result_status = mysqli_query($conn, $sql);
+            ?>
+              <a href='#' class='btn btn-primary disabled'>Bid Not Started Yet</a>
+
+            <?php } else if ($today >= $bidday && $today < $bidend) {
+              $sql_status = "UPDATE `product` SET `status` = 'on sale' WHERE `product`.`id` = $id";        // updating status
+              $result_status = mysqli_query($conn, $sql);
+            ?>
+              <a href='product_display.php?pId=<?php echo $row['id']; ?>' < class='btn btn-primary'>BID</a>
+            <?php
+            } else if ($today > $bidend) {
+              $sql_status = "UPDATE `product` SET `status` = 'sold' WHERE `product`.`id` = $id";  // updating status
+              $result_status = mysqli_query($conn, $sql);
+            ?>
+              <a href='product_display.php?pId=<?php echo $row['id']; ?>' class='btn btn-danger '>Sold out</a>  
+            <?php } ?>
+          </div>
+          
+    <?php
       }
     }
-?>
+  }
+    ?>
 
-</div>
-</div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </div>
+    </div>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+    <script>
+      let slideIndex = 0;
+      showSlides();
+      
+      function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+      }
+      </script>
 </body>
+
+
 
 </html>
