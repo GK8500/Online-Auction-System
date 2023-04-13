@@ -1,7 +1,7 @@
 <?php
 include "../partials/db.php";
 $id = $_GET['pId'];
-// $sql = "SELECT product.*, product_image.path imagePath FROM `product` left join product_image WHERE `id` = $id";
+
 $sql = "SELECT product.*, product_image.path imagePath FROM `product` join product_image WHERE product_image.product_id = $id";
 $result = mysqli_query($conn, $sql);
 session_start();
@@ -144,6 +144,7 @@ $row = mysqli_fetch_assoc($result);
 </head>
 
 <body>
+	
     <div class="row container-fluid">
         <div class="col-lg-6 col-sm-6">
             <img src=<?php echo $row['imagePath'] ?> width="400px">
@@ -190,6 +191,26 @@ $row = mysqli_fetch_assoc($result);
         </div>
     </div>
 
+	<?php
+	
+	$sql1 = "SELECT * FROM product WHERE id = $id";
+	$result1 = mysqli_query($conn, $sql1);
+	
+
+	$product_row = mysqli_fetch_assoc($result1);
+	$cat = $product_row['catogary'];
+	echo $cat;
+	
+
+	$sql2 = "SELECT * FROM product WHERE catogary = '$cat' ";
+	$result2 = mysqli_query($conn, $sql2);
+	
+	while($cat_row = mysqli_fetch_assoc($result2) ){
+
+	
+
+	?>
+
     <div class="container">
     <div id="slide-left-container">
       <div class="slide-left">
@@ -198,85 +219,15 @@ $row = mysqli_fetch_assoc($result);
     <div id="cards-container">
       <div class="cards">
         <div class="card">
-          <img src="http://via.placeholder.com/220x220" alt="Animals" style="width:100%">
+          <img src="img src=<?php echo $row['imagePath'] ?>" alt="Animals" style="width:100%">
           <div class="container">
             <h4>
-              <b>Animals</b>
+              <b><?php echo $row['name']; ?></b>
             </h4>
           </div>
         </div>
-        <div class="card">
-          <img src="http://via.placeholder.com/220x220" alt="Nature" style="width:100%">
-          <div class="container">
-            <h4>
-              <b>Nature</b>
-            </h4>
-          </div>
-        </div>
-        <div class="card">
-          <img src="http://via.placeholder.com/220x220" alt="Architecture" style="width:100%">
-          <div class="container">
-            <h4>
-              <b>Architecture</b>
-            </h4>
-          </div>
-        </div>
-        <div class="card">
-          <img src="http://via.placeholder.com/220x220" alt="Technology" style="width:100%">
-          <div class="container">
-            <h4>
-              <b>Technology</b>
-            </h4>
-          </div>
-        </div>
-        <div class="card">
-          <img src="http://via.placeholder.com/220x220" alt="People" style="width:100%">
-          <div class="container">
-            <h4>
-              <b>People</b>
-            </h4>
-          </div>
-        </div>
-        <div class="card">
-          <img src="http://via.placeholder.com/220x220" alt="Animals" style="width:100%">
-          <div class="container">
-            <h4>
-              <b>Animals</b>
-            </h4>
-          </div>
-        </div>
-        <div class="card">
-          <img src="http://via.placeholder.com/220x220" alt="Nature" style="width:100%">
-          <div class="container">
-            <h4>
-              <b>Nature</b>
-            </h4>
-          </div>
-        </div>
-        <div class="card">
-          <img src="http://via.placeholder.com/220x220" alt="Architecture" style="width:100%">
-          <div class="container">
-            <h4>
-              <b>Architecture</b>
-            </h4>
-          </div>
-        </div>
-        <div class="card">
-          <img src="http://via.placeholder.com/220x220" alt="Technology" style="width:100%">
-          <div class="container">
-            <h4>
-              <b>Technology</b>
-            </h4>
-          </div>
-        </div>
-        <div class="card">
-          <img src="http://via.placeholder.com/220x220" alt="People" style="width:100%">
-          <div class="container">
-            <h4>
-              <b>People</b>
-            </h4>
-          </div>
-        </div>
+
+		<?php } ?>
       </div>
     </div>
 
