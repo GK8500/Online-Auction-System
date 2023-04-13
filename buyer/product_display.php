@@ -6,7 +6,7 @@ $sql = "SELECT product.*, product_image.path imagePath FROM `product` join produ
 $result = mysqli_query($conn, $sql);
 session_start();
 $user = $_SESSION['username'];
-echo $user;
+// echo $user;
 if (!isset($_SESSION['loggedin'])) {
     header("location: login.php");
     exit;
@@ -193,13 +193,19 @@ $row = mysqli_fetch_assoc($result);
 
 	<?php
 	
+	// First we get the catogary of the prodcut that is displayed on this page and then we store that catogary in a variable.
+	// Then that variable is used in another query to get other products of the same catogary, making a recommendation system.
+
+//  Query 1
+
 	$sql1 = "SELECT * FROM product WHERE id = $id";
 	$result1 = mysqli_query($conn, $sql1);
 	
+// Query 2
 
 	$product_row = mysqli_fetch_assoc($result1);
 	$cat = $product_row['catogary'];
-	echo $cat;
+	// echo $cat;
 	
 
 	$sql2 = "SELECT * FROM product WHERE catogary = '$cat' ";
