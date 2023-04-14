@@ -131,7 +131,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="containers">
     <form action="Admin_login.php" method="post" autocomplete="on">
-        <h1 STYLE="padding: 5px; margin-right: auto; margin-left: auto">SIGN IN</h1>
+        <h1 STYLE="padding: 5px; margin-right: auto; margin-left: auto">ADMIN SIGN IN</h1>
         <div class="login">
 
                 <input placeholder="Username" type="text" class="username" name="username">

@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark ps-3 fixed-top "  >
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ps-3 fixed-top"  style="margin-bottom: 20px ;">
     <a class="navbar-brand" href="#">AW</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -18,32 +18,39 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="../buyer/index.php">Home</a>
+                <a class="nav-link" href="../seller/Seller_dash.php">Home</a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="../seller/product_registration.php">Sell</a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="../buyer/about.php">About Us</a>
-            </li>
+
 <?php       if(!isset($_SESSION['loggedin'])){
              ?>
             <div class="float-right" style="text-align:right">
                 <li class="nav-item">
-                    <a class="nav-link" href="../buyer/login_1.php" >Sign In</a>
+                    <a class="nav-link" href="../seller/signup.php" >Sign Up</a>
                 </li>
 
             <?php } ?>
             </div><div class="float-right" style="text-align:right">
                 <li class="nav-item">
-                    <a class="nav-link" href="../buyer/logout.php" >Logout</a>
+                    <a class="nav-link" href="../seller/logout.php" >Logout</a>
                 </li>
+                
             </div>
+            <li class="nav-item">
+                <a class="nav-link" href="../buyer/about.php">About Us</a>
+            </li>
         </ul>
     </div>
+
 </nav>
+<div >
+        <hr>
+    </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>

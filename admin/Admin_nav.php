@@ -14,7 +14,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ps-3 fixed-top ">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ps-3 fixed-top " style="margin-bottom: 20px ;">
         <a class="navbar-brand" href="#">AW</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -29,13 +29,14 @@
                         Categories
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Home Appliances</a></li>
-                        <li><a class="dropdown-item" href="#">Home Decor</a></li>
-                        <li><a class="dropdown-item" href="#">Laptop/Mobile Phones/Watches</a></li>
-                        <li><a class="dropdown-item" href="#">Bikes</a></li>
-                        <li><a class="dropdown-item" href="#">Cars</a></li>
-                        <li><a class="dropdown-item" href="#">Coins & Currency</a></li>
-                        <li><a class="dropdown-item" href="#">Others</a></li>
+                    <li><a class="dropdown-item" href="../category/applainces.php">Appliances</a></li>
+                    <li><a class="dropdown-item" href="../category/decor.html">Home Decor</a></li>
+                    <li><a class="dropdown-item" href="../category/electronics.php">Electronics</a></li>
+                    <li><a class="dropdown-item" href="../category/fashion.php">Fashion</a></li>
+                    <li><a class="dropdown-item" href="../category/watches.php">Watches</a></li>
+                    <li><a class="dropdown-item" href="../category/cars.php">Cars & Bikes</a></li>
+                    <li><a class="dropdown-item" href="../category/coins.php">Coins & Currency</a></li>
+                    <li><a class="dropdown-item" href="../category/other.php">Others</a></li>
                     </ul>
                 </li>
 
@@ -47,8 +48,13 @@
             </ul>
         </div>
     </nav>
+    <div >
+        <hr>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
 
 </html>

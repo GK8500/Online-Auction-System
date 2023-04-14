@@ -139,7 +139,7 @@ echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
 
 <div class="containers">
     <form action="login.php" method="post" autocomplete="on">
-        <h1 STYLE="padding: 5px; margin-right: auto; margin-left: auto">SIGN IN</h1>
+        <h1 STYLE="padding: 5px; margin-right: auto; margin-left: auto">SELLER SIGN IN</h1>
         <div class="login">
 
             <input placeholder="Username" type="text" class="username" name="username">

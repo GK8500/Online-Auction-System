@@ -7,7 +7,7 @@ include "../admin/Admin_nav.php";
 if (isset($_GET['delete'])) {
     $sno = $_GET['delete'];
     $delete = true;
-    $sql = "DELETE FROM `seller` WHERE `id` = $sno";
+    $sql = "DELETE FROM `product` WHERE `id` = $sno";
     $result = mysqli_query($conn, $sql);
 }
 
@@ -58,26 +58,34 @@ if (isset($_GET['delete'])) {
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">email</th>
-                    <th scope="col">password</th>
+                    <th scope="col">Seller</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Current Bid</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Bid Start</th>
+                    <th scope="col">Bid End</th>
+                    <th scope="col">Buyer</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Edit</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $sql = "SELECT * FROM `seller`";
+                $sql = "SELECT * FROM `product`";
                 $result = mysqli_query($conn, $sql);
                 $sno = 0;
                 while ($row = mysqli_fetch_assoc($result)) {
                     $sno += 1;
                     echo "<tr>
     <th scope='row'>" . $sno . "</th>
-    <td>" . $row['username'] . "</td>
+    <td>" . $row['sold_by'] . "</td>
     <td>" . $row['name'] . "</td>
-    <td>" . $row['email'] . "</td>
-    <td>" . $row['password'] . "</td>
+    <td>" . $row['msp'] . "</td>
+    <td>" . $row['catogary'] . "</td>
+    <td>" . $row['bidstart'] . "</td>
+    <td>" . $row['bidend'] . "</td>
+    <td>" . $row['username'] . "</td>
+    <td>" . $row['status'] . "</td>
     <td> <button class='delete btn btn-sm btn-primary' id=d" . $row['id'] . ">Delete</button>  </td>
   </tr>";
                 }

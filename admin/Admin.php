@@ -1,5 +1,6 @@
 <?php
 require "../partials/db.php";
+include "../admin/Admin_nav.php";
 
 session_start();
 

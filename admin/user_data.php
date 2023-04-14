@@ -1,3 +1,5 @@
+<?php include "../admin/Admin_nav.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +26,7 @@
     
     // connecting database
     include "C:/xampp/htdocs/AuctionSystem/partials/db.php";
+    
     // to read all the data from table
 
     $sql = "SELECT * FROM `users`";
