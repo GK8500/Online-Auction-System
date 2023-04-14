@@ -17,10 +17,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+            <!-- Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="../seller/Seller_dash.php">Home</a>
             </li>
-
+            <!-- new product -->
             <li class="nav-item">
                 <a class="nav-link" href="../seller/product_registration.php">Sell</a>
             </li>
