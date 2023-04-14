@@ -140,6 +140,17 @@ $row = mysqli_fetch_assoc($result);
             transform: rotate(45deg);
             margin-left: 22%;
         }
+
+		.bid-view{
+			background-color: #7F7CAF;
+			border: 1px solid #7F7CAF;
+			border-radius: 5px;
+			padding-top: 5px ;
+			padding-left: 10px;
+			padding-bottom: 5px;
+			padding-right: 10px;
+			color: azure;
+		}
     </style>
 </head>
 
@@ -159,7 +170,7 @@ $row = mysqli_fetch_assoc($result);
 
             <div class="cable">
                 <p>Current Bid</p>
-                <button type="button" class="btn btn-outline-info"><?php echo $row['msp']; ?></button>
+                <button type="button" class="bid-view"  style=""><?php echo $row['msp']; ?></button>
 
             </div>
             <hr>
@@ -211,7 +222,7 @@ $row = mysqli_fetch_assoc($result);
 	$sql2 = "SELECT * FROM product WHERE catogary = '$cat' ";
 	$result2 = mysqli_query($conn, $sql2);
 	
-	while($cat_row = mysqli_fetch_assoc($result2) ){
+	while($cat_row = mysqli_fetch_assoc($result2) ){ 		// or there are more than 5 products then only 5 of them will be displayed
 
 	
 
