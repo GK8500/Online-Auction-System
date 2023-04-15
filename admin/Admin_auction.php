@@ -105,7 +105,7 @@ if (isset($_GET['delete'])) {
 
                     if (confirm("Are you sure")) {
                         console.log("yes");
-                        window.location = `htdocs/AuctionSystem/New%20folder/new.php?delete=${sno}`;
+                        window.location = `/AuctionSystem/admin/Admin_auction.php?delete=${sno}`;
                     } else {
                         console.log("no");
                     }

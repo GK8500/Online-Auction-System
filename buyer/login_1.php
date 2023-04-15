@@ -166,6 +166,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="admin" style="padding-top: 5px; text-align: center; padding-bottom:5px ">
             <a href="../admin/Admin_login.php">Login as Admin</a>
         </div>
+        <div class="admin" style="padding-top: 5px; text-align: center; padding-bottom:5px ">
+            <a href="../seller/login.php">Login as Seller</a>
+        </div>
     </form>
 </div>
 

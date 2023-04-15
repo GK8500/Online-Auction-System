@@ -1,54 +1,110 @@
+<?php   
+$delete=false;
 
+include "../partials/db.php";
+include "../admin/Admin_nav.php";
+if(isset($_GET['delete'])){
+  $sno=$_GET['delete'];
+  $delete=true;
+  $sql = "DELETE FROM `users` WHERE `sno` = $sno";
+  $result = mysqli_query($conn, $sql);
+} 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-    <title>USER DATA</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit here</title>
+    <link rel="stylesheet" href="bg.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <!-- //cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+    
 </head>
 <body>
-<table class="table">
-  <thead>
-  <tr>
-    <th>user_id</th>
-    <th>username</th>
-    <th>name</th>
-    <th>u_email</th>
-    <th>u_password</th>
-    <th>status</th>
-    <th>Action</th>
-  </tr>
-  </thead>
-  <tbody>
-  <?php
- include "../admin/Admin_nav.php";
-    // connecting database
-    include "C:/xampp/htdocs/AuctionSystem/partials/db.php";
-    
-    // to read all the data from table
 
-    $sql = "SELECT * FROM `users`";
-    $result = mysqli_query($conn,$sql);
-    while($row = mysqli_fetch_assoc($result)){
+
+<?php
+     if ($delete){
+        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+        <strong>Success!</strong> Your note has been deleted successfully.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+      </div>";
+     }
+    ?>
+
+
+    <h1 class="mx-5">Del details</h1>
+    <div class="container my-4">
+        <table class="table" id="myTable">
+            <thead>
+                <tr>
+                    <th scope="col">SNo</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+$sql = "SELECT * FROM `users`";
+$result = mysqli_query($conn, $sql);
+$sno=0;
+while($row = mysqli_fetch_assoc($result)){
+    $sno +=1;
     echo "<tr>
-      <td>".$row['user_id']."</td>
-      <td>".$row['username']."</td>
-      <td>".$row['name']."</td>
-      <td>".$row['u_email']."</td>
-      <td>".$row['u_password']."</td>
-      <td>".$row['status']."</td>
-      <td>
-        <a href='#'>Update</a> </td>
-        <td><a href='#'>Delete</a>
-      </td>
-    </tr>";
+    <th scope='row'>".$sno."</th>
+    <td>".$row['username']."</td>
+    <td>".$row['name']."</td>
+    <td>".$row['u_email']."</td>
+    <td>".$row['u_password']."</td>
+    <td> <button class='delete btn btn-sm btn-primary' id=d".$row['user_id'].">Delete</button>  </td>
+  </tr>";
+}
+?>
 
-    }
-  ?>
-  </tbody>
-</table>
+            </tbody>
+        </table>
 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+        <script>
+
+          deletes = document.getElementsByClassName('delete');
+        Array.from(deletes).forEach((element) => {
+            element.addEventListener("click", (e) => {
+                console.log("delete",);
+                sno = e.target.id.substr(1,);
+
+                if (confirm("Are you sure")) {
+                    console.log("yes");
+                    window.location = `/AuctionSystem/admin/seller_data.php?delete=${sno}`;
+                }
+                else {
+                    console.log("no");
+                }
+            })
+        })
+      </script>
 </body>
 </html>
