@@ -1,6 +1,6 @@
 <?php
 require "../partials/db.php";
-include "../admin/Admin_nav.php";
+
 
 session_start();
 
@@ -66,7 +66,7 @@ if (!isset($_SESSION['loggedin'])) {
         <div class="d-grid gap-2 col-6 mx-auto">
             <a href="user_data.php"><button class="btn btn-outline-dark" type="button" id="user">Users </button></a>
             <a href="seller_data.php"><button class="btn btn-outline-dark" type="button" id="user">Sellers </button></a>
-            <button class="btn btn-outline-info" type="button" id="auction">Auctions</button>
+            <a href="Admin_auction.php"><button class="btn btn-outline-info" type="button" id="auction">Auctions</button></a>
             <a href="new_admin.php"><button class="btn btn-outline-danger" type="button" id="admin">Add New Admin </button></a>
         </div>
     </div>

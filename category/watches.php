@@ -4,7 +4,7 @@ require "../partials/db.php";
 
 session_start();
 
-if(!isset($_SESSION['loggedin'])){
+if (!isset($_SESSION['loggedin'])) {
 
     header('location: C:\xampp\htdocs\AuctionSystem\buyer\login_1.php');
     exit;
@@ -12,118 +12,194 @@ if(!isset($_SESSION['loggedin'])){
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <title>Watches Category Page</title>
+    <link rel="stylesheet" href="bg.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+        /* Reset default browser styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            /*color: azure;*/
-            /*font-family: 'Roboto', sans-serif;*/
-            /*font-size: xxx-large;*/
-        }
-        .half {
-            color: #ffffff;
-            position: absolute;
-            top: 250px;
-            right: 700px;
-            padding-top: 20px;
-            opacity: 1;
-            /*top: 8px;*/
-            /*right: 16px;*/
-        }
-        .container{
-            position: relative;
-            text-align: LEFT;
-            /*opacity: 0.5;*/
+            height: 100vh;
+            width: 100%;
+            background-color: red;
+            /* For browsers that do not support gradients */
+            background-image: linear-gradient(to right, #AAFAC8, #C7FFED, #BBC8CA, #B592A0, #9C7178);
+            background-size: cover;
         }
 
+        /* Style the header */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
 
+        /* Style the navigation menu */
+        nav {
+            background-color: #ccc;
+            padding: 0.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style-type: none;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 1rem;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+        }
+
+        nav a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Style the main content area */
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Style the individual product items */
+        .product {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            width: 300px;
+            border-radius: 0.25rem;
+            text-align: center;
+        }
+
+        .product img {
+            max-width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .product h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .product p {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .product button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #333;
+        }
+
+        /* Style the footer */
+        footer {
+            background-color: #ccc;
+            padding: 1rem;
+            text-align: center;
+        }
     </style>
-    <title>Watches</title>
 </head>
+
 <body>
-<div class="container">
-    <!-- background image-->
-    <img src="pictures/watch2.jpg" alt="" srcset="" style="height: 50rem; width: 100%; object-fit: cover;">
-    <div class="half" >
-<!--        // quote -->
-   <pre>
-    <strong> Your watch represents your culture
-     and your values... Chose is carefully
-                            - Kobe Bryant
-                            <sub style="font-size: xx-large">Professional basketball player</sub>
+    <header>
+        <h1>Watches Category</h1>
+    </header>
 
-    </strong>
-   </pre>
-
-    </div>
-</div>
-<div class="card">
-    <div class="card-group">
-
+    <main>
         <?php
 
-        $sql = "SELECT * FROM product WHERE catogary = 'watch'";
-        $result = mysqli_query($conn,$sql);
+        $sql = "SELECT * FROM product WHERE catogary = 'watches'";
+        $result = mysqli_query($conn, $sql);
 
-        while($row = mysqli_fetch_assoc($result)){
+        while ($row = mysqli_fetch_assoc($result)) {
             $id = $row['id'];
-            ?>
-
-
-            <div class="card sm-2" style="max-width: 540px; margin: 20px 20px; left: 10px;color: black; border: 1px solid black;">
+        ?>
+            <!-- Product item 1 -->
+            <div class="product">
                 <img class="card-img-top" src="../seller/uploads/test.jpg" alt="Card image cap" style="height:200px; width:250px; border: 10px solid black">
-                <div class='card-body'>
-                    <u> <h5 class='card-title'> <?php echo $row['name']; ?> </h5></u>
-                    <p class='card-text'><?php echo $row['description']; ?></p>
-                    <p class='card-text'>Rs <?php echo $row['msp']; ?> </p>
-                    <?php
 
-                    // checking if bid needs to be started or ended
+                <h3><?php echo $row['name']; ?></h3>
+                <p class='card-text'><?php echo $row['description']; ?></p>
+                <p class='card-text'>Rs <?php echo $row['msp']; ?> </p>
 
-                    $today = date("Y-m-d");    // today's date
-                    $bidday = $row['bidstart'];      // check if the date to start the bid has arrived
-                    $bidend = $row['bidend'];        // check if the date to end the bid has arrived
+                <?php
+
+                // checking if bid needs to be started or ended
+
+                $today = date("Y-m-d");    // today's date
+                $bidday = $row['bidstart'];      // check if the date to start the bid has arrived
+                $bidend = $row['bidend'];        // check if the date to end the bid has arrived
 
 
-                    if($today<$bidday){
-                        $sql_status = "UPDATE `product` SET `status` = 'not started' WHERE `product`.`id` = $id";        // updating status
-                        $result_status = mysqli_query($conn, $sql);
-                        ?>
-                        <a href='#' class='btn btn-primary disabled'>Bid Not Started Yet</a>
+                if ($today < $bidday) {
+                    $sql_status = "UPDATE `product` SET `status` = 'not started' WHERE `product`.`id` = $id";        // updating status
+                    $result_status = mysqli_query($conn, $sql);
+                ?>
+                    <a href='#' class='btn btn-primary disabled'>Bid Not Started Yet</a>
 
-                    <?php }
-                    else if($today >= $bidday && $today<$bidend ){
-                        $sql_status = "UPDATE `product` SET `status` = 'on sale' WHERE `product`.`id` = $id";        // updating status
-                        $result_status = mysqli_query($conn, $sql);
-                        ?>
-                        <a href='../buyer/product_display.php?pId=<?php echo $row['id']; ?>'< class='btn btn-primary'>BID</a>
-                        <?php
-                    }
-                    else if($today>$bidend ){
-                        $sql_status = "UPDATE `product` SET `status` = 'sold' WHERE `product`.`id` = $id";  // updating status
-                        $result_status = mysqli_query($conn, $sql);
-                        ?>
-                        <a href='../buyer/product_display.php?pId=<?php echo $row['id']; ?>' class='btn btn-danger ' >Sold out</a>
-                    <?php } ?>
-                </div>
+                <?php } else if ($today >= $bidday && $today < $bidend) {
+                    $sql_status = "UPDATE `product` SET `status` = 'on sale' WHERE `product`.`id` = $id";        // updating status
+                    $result_status = mysqli_query($conn, $sql);
+                ?>
+                    <a href='../buyer/product_display.php?pId=<?php echo $row['id']; ?>' < class='btn btn-primary'>BID</a>
+                <?php
+                } else if ($today > $bidend) {
+                    $sql_status = "UPDATE `product` SET `status` = 'sold' WHERE `product`.`id` = $id";  // updating status
+                    $result_status = mysqli_query($conn, $sql);
+                ?>
+                    <a href='../buyer/product_display.php?pId=<?php echo $row['id']; ?>' class='btn btn-danger '>Sold out</a>
+                <?php } ?>
+            </div>
             </div>
 
-            <?php
+        <?php
         }
         ?>
 
+    </main>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
 </body>
+
 </html>

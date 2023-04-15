@@ -48,7 +48,7 @@
             </ul>
         </div>
     </nav>
-    <div >
+    <div style="padding-bottom: 25px;">
         <hr>
     </div>
 

@@ -1,0 +1,7 @@
+body {
+    height: 100vh;
+    width: 100rem;
+    background-color: red; /* For browsers that do not support gradients */
+    background-image: linear-gradient(to right, #AAFAC8, #C7FFED, #BBC8CA, #B592A0, #9C7178);
+    background-size:cover;
+}

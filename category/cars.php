@@ -4,112 +4,171 @@ require "../partials/db.php";
 
 session_start();
 
-if(!isset($_SESSION['loggedin'])){
+if (!isset($_SESSION['loggedin'])) {
 
-    header('location: C:\xampp\htdocs\AuctionSystem\buyer\login_1.php');
-    exit;
+	header('location: C:\xampp\htdocs\AuctionSystem\buyer\login_1.php');
+	exit;
 }
 
 ?>
 
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<link rel="stylesheet" href="bg.css">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<!--    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Rowdies&display=swap" rel="stylesheet">-->
-    <style>
-        body {
-            /*color: azure;*/
-            /*font-family: 'Rowdies', cursive;*/
-            /*font-size: xxx-large;*/
-        }
-        .half {
-            position: absolute;
-            top: 250px;
-            right: 830px;
-            padding-top: 20px;
-            /*top: 8px;*/
-            /*right: 16px;*/
-            }
-        .bg-container{
-            position: relative;
-            text-align: center;
-        }
+	<title>Vehicle Category Page</title>
+	<style>
+		/* Reset styles */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
 
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+			color: #333;
+			background-color: #f9f9f9;
+		}
 
-    </style>
-    <title>Cars</title>
+		h1,
+		h2,
+		h3 {
+			margin: 20px 0;
+			text-align: center;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.row {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 0 -10px;
+		}
+
+		.col {
+			flex: 1;
+			padding: 10px;
+		}
+
+		.card {
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			transition: transform 0.2s ease-in-out;
+			cursor: pointer;
+			overflow: hidden;
+		}
+
+		.card:hover {
+            background-color: #585858;
+            color: #fff;
+			transform: translateY(-5px);
+		}
+
+		.card img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		.card-body {
+			padding: 20px;
+		}
+
+		.card-title {
+			font-size: 20px;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+
+		.card-text {
+			font-size: 16px;
+			line-height: 1.5;
+			margin-bottom: 20px;
+		}
+
+		.card-price {
+			font-size: 24px;
+			font-weight: bold;
+			color: #008000;
+		}
+		.card-price:hover {
+			font-size: 24px;
+			font-weight: bold;
+			color: #ffffff;
+		}
+
+		.card-location {
+			font-size: 16px;
+			font-weight: bold;
+			color: #666;
+			margin-bottom: 10px;
+		}
+	</style>
 </head>
+
 <body>
-<div class="bg-container">
-<!-- background image-->
-<img src="pictures/car1.jpg" alt="" srcset="" style="height: 50rem; width: 100%; object-fit: fill">
-<div class="half" >
-    LOOKING FOR YOUR FIRST RIDE ? WE GOT YOU COVERED!
-</div>
-</div>
+	<?php
+    include "../partials/_navbar.php";
 
-<div class="card-group">
+	$sql = "SELECT * FROM product WHERE catogary = 'cars&bikes'";
+	$result = mysqli_query($conn, $sql);
 
-    <?php
+	while ($row = mysqli_fetch_assoc($result)) {
+		$id = $row['id'];
+	?>
+		<div class="container">
+			<h1 style="padding-top: 40px;">Vehicles</h1>
+			<div class="row">
+				<div class="col">
+					<div class="card">
+						<img class="card-img-top" src="../seller/uploads/test.jpg" alt="Card image cap" style="height:200px; width:464px; border: 10px solid black">
+						<div class="card-body">
+							<div class="card-title"><?php echo $row['name']; ?></div>
+							<div class="card-text"><?php echo $row['description']; ?></div>
+							<div class="card-price">Rs <?php echo $row['msp']; ?> </div>
+							<?php
 
-    $sql = "SELECT * FROM product WHERE catogary = 'cars&bikes'";
-    $result = mysqli_query($conn,$sql);
+							// checking if bid needs to be started or ended
 
-    while($row = mysqli_fetch_assoc($result)){
-        $id = $row['id'];
-        ?>
-
-
-
-        <div class="card" style="width: 18rem; margin: 20px 20px; left: 10px;color: black; border: 1px solid black;">
-            <img class="card-img-top" src="../seller/uploads/test.jpg" alt="Card image cap" style="height:200px; width:464px; border: 10px solid black">
-            <div class='card-body'>
-                <u> <h5 class='card-title'> <?php echo $row['name']; ?> </h5></u>
-                <p class='card-text'><?php echo $row['description']; ?></p>
-                <p class='card-text'>Rs <?php echo $row['msp']; ?> </p>
-                <?php
-
-                // checking if bid needs to be started or ended
-
-                $today = date("Y-m-d");    // today's date
-                $bidday = $row['bidstart'];      // check if the date to start the bid has arrived
-                $bidend = $row['bidend'];        // check if the date to end the bid has arrived
+							$today = date("Y-m-d");    // today's date
+							$bidday = $row['bidstart'];      // check if the date to start the bid has arrived
+							$bidend = $row['bidend'];        // check if the date to end the bid has arrived
 
 
-                if($today<$bidday){
-                    $sql_status = "UPDATE `product` SET `status` = 'not started' WHERE `product`.`id` = $id";        // updating status
-                    $result_status = mysqli_query($conn, $sql);
-                    ?>
-                    <a href='#' class='btn btn-primary disabled'>Bid Not Started Yet</a>
+							if ($today < $bidday) {
+								$sql_status = "UPDATE `product` SET `status` = 'not started' WHERE `product`.`id` = $id";        // updating status
+								$result_status = mysqli_query($conn, $sql);
+							?>
+								<a href='#' class='btn btn-primary disabled'>Bid Not Started Yet</a>
 
-                <?php }
-                else if($today >= $bidday && $today<$bidend ){
-                    $sql_status = "UPDATE `product` SET `status` = 'on sale' WHERE `product`.`id` = $id";        // updating status
-                    $result_status = mysqli_query($conn, $sql);
-                    ?>
-                    <a href='../buyer/product_display.php?pId=<?php echo $row['id']; ?>'< class='btn btn-primary'>BID</a>
-                    <?php
-                }
-                else if($today>$bidend ){
-                    $sql_status = "UPDATE `product` SET `status` = 'sold' WHERE `product`.`id` = $id";  // updating status
-                    $result_status = mysqli_query($conn, $sql);
-                    ?>
-                    <a href='../buyer/product_display.php?pId=<?php echo $row['id']; ?>' class='btn btn-danger ' >Sold out</a>
-                <?php } ?>
+							<?php } else if ($today >= $bidday && $today < $bidend) {
+								$sql_status = "UPDATE `product` SET `status` = 'on sale' WHERE `product`.`id` = $id";        // updating status
+								$result_status = mysqli_query($conn, $sql);
+							?>
+								<a href='../buyer/product_display.php?pId=<?php echo $row['id']; ?>' < class='btn btn-primary'>BID</a>
+							<?php
+							} else if ($today > $bidend) {
+								$sql_status = "UPDATE `product` SET `status` = 'sold' WHERE `product`.`id` = $id";  // updating status
+								$result_status = mysqli_query($conn, $sql);
+							?>
+								<a href='../buyer/product_display.php?pId=<?php echo $row['id']; ?>' class='btn btn-danger '>Sold out</a>
+							<?php } ?>
+						</div>
+					</div>
+				</div>
+			<?php
+		}
+			?>
+
             </div>
-        </div>
-
-        <?php
-    }
-    ?>
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-
 </body>
 </html>
