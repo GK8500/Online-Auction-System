@@ -1,3 +1,7 @@
+<?php
+include "../partials/_navbar.php";
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -37,6 +41,7 @@
       font-size: 36px;
       font-weight: bold;
       margin-bottom: 20px;
+      padding-top: 60px;
     }
 
     h2 {
@@ -98,7 +103,7 @@
     }
   </style>
   <body>
-    <div class="container">
+    <div class="container" >
       <h1>About Us</h1>
       <p>
         Welcome to our online auction website! We provide a platform for buyers and sellers to come together and trade a variety of items through an exciting and engaging auction process.

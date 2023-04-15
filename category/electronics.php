@@ -119,7 +119,7 @@ if (!isset($_SESSION['loggedin'])) {
 	<?php
     include "../partials/_navbar.php";
 
-	$sql = "SELECT * FROM product WHERE catogary = 'electronics'";
+	$sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.catogary = 'electronics'";
 	$result = mysqli_query($conn, $sql);
 
 	while ($row = mysqli_fetch_assoc($result)) {
@@ -130,7 +130,7 @@ if (!isset($_SESSION['loggedin'])) {
 			<div class="row">
 				<div class="col">
 					<div class="card">
-						<img class="card-img-top" src="../seller/uploads/test.jpg" alt="Card image cap" style="height:200px; width:464px; border: 10px solid black">
+					<center><img src=<?php echo $row['path'] ?> width="400px"></center>
 						<div class="card-body">
 							<div class="card-title"><?php echo $row['name']; ?></div>
 							<div class="card-text"><?php echo $row['description']; ?></div>

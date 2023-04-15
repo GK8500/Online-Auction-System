@@ -1,0 +1,211 @@
+<?php
+
+require "../partials/db.php";
+
+session_start();
+
+if(!isset($_SESSION['loggedin'])){
+
+    header('location: C:\xampp\htdocs\AuctionSystem\buyer\login_1.php');
+    exit;
+}
+
+?>
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coins Category</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <style>
+    /* coins.css */
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+nav{
+    background-color: #333;
+}
+
+nav ul {
+    
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  color: #333;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #ddd;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+section.filters {
+  width: 20%;
+  margin-right: 20px;
+}
+
+section.filters h2 {
+  margin-bottom: 10px;
+}
+
+section.filters form {
+  display: flex;
+  flex-direction: column;
+}
+
+section.filters label {
+  margin-bottom: 5px;
+}
+
+section.filters select {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+section.filters button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+section.items {
+  width: 75%;
+}
+
+section.items h2 {
+  margin-bottom: 20px;
+}
+
+section.items .item {
+  width: 33.33%;
+  padding: 10px;
+}
+
+section.items .item img {
+  max-width: 100%;
+}
+
+section.items .item h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+section.items .item p {
+  margin-bottom: 5px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+  </style>
+  <body>
+    <header style="background-color: #333;">
+      <h1 style="color: #ddd;">Coins Category</h1>
+      <nav>
+        <ul>
+          
+      </nav>
+    </header>
+    <main>
+<?php
+
+    $sql = "SELECT * FROM product WHERE catogary = 'coins'";
+    $result = mysqli_query($conn,$sql);
+
+    while($row = mysqli_fetch_assoc($result)){
+        $id = $row['id'];
+?>
+
+      <section class="items">
+        <h2>Coins for Sale</h2>
+        <div class="item">
+          <img class="card-img-top" src="../seller/uploads/test.jpg" alt="Card image cap" style="height:200px; width:250px; border: 10px solid black">
+          <h3><?php echo $row['name']; ?> </h3>
+          <p><?php echo $row['description']; ?></p>
+          <p>Rs <?php echo $row['msp']; ?></p>
+
+           <?php
+
+                // checking if bid needs to be started or ended
+
+                $today = date("Y-m-d");    // today's date
+                $bidday = $row['bidstart'];      // check if the date to start the bid has arrived
+                $bidend = $row['bidend'];        // check if the date to end the bid has arrived
+
+
+                if($today<$bidday){
+                    $sql_status = "UPDATE `product` SET `status` = 'not started' WHERE `product`.`id` = $id";        // updating status
+                    $result_status = mysqli_query($conn, $sql);
+                    ?>
+                    <a href='#' class='btn btn-primary disabled'>Bid Not Started Yet</a>
+
+                <?php }
+                else if($today >= $bidday && $today<$bidend ){
+                    $sql_status = "UPDATE `product` SET `status` = 'on sale' WHERE `product`.`id` = $id";        // updating status
+                    $result_status = mysqli_query($conn, $sql);
+                    ?>
+                    <a href='../buyer/product_display.php?pId=<?php echo $row['id']; ?>'< class='btn btn-primary'>BID</a>
+                    <?php
+                }
+                else if($today>$bidend ){
+                    $sql_status = "UPDATE `product` SET `status` = 'sold' WHERE `product`.`id` = $id";  // updating status
+                    $result_status = mysqli_query($conn, $sql);
+                    ?>
+                    <a href='../buyer/product_display.php?pId=<?php echo $row['id']; ?>' class='btn btn-danger ' >Sold out</a>
+                <?php } ?>
+            </div>
+        </div>
+
+        <?php
+    }
+    ?>
+        </div>
+        
+      </section>
+    </main>
+    <footer style="background-color: #333; color: #fff;">
+      <p>&copy; 2023 Coins Auction, Inc.</p>
+    </footer>
+  </body>
+</html>

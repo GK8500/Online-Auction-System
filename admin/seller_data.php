@@ -38,6 +38,12 @@ if (isset($_GET['delete'])) {
     </script>
 
 </head>
+<style>
+body {
+            background-image: linear-gradient(to right, #c33764, #1d2671);
+            color: white;
+        }
+</style>
 
 <body>
 
@@ -54,18 +60,18 @@ if (isset($_GET['delete'])) {
 
     <h1 class="mx-5">Del details</h1>
     <div class="container my-4">
-        <table class="table" id="myTable">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">email</th>
-                    <th scope="col">password</th>
-                    <th scope="col">Edit</th>
+        <table class="table" id="myTable" style="border: 5px solid black;">
+            <thead style="border: 5px solid black;">
+                <tr  style="border: 5px solid black;">
+                    <th scope="col" style="border: 5px solid black;">Id</th>
+                    <th scope="col" style="border: 5px solid black;">Username</th>
+                    <th scope="col" style="border: 5px solid black;">Name</th>
+                    <th scope="col" style="border: 5px solid black;">email</th>
+                    <th scope="col" style="border: 5px solid black;">password</th>
+                    <th scope="col" style="border: 5px solid black;">Edit</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="color: aliceblue;">
                 <?php
                 $sql = "SELECT * FROM `seller`";
                 $result = mysqli_query($conn, $sql);
@@ -97,7 +103,7 @@ if (isset($_GET['delete'])) {
 
                     if (confirm("Are you sure")) {
                         console.log("yes");
-                        window.location = `htdocs/AuctionSystem/New%20folder/new.php?delete=${sno}`;
+                        window.location = `/AuctionSystem/admin/seller_data.php?delete=${sno}`;
                     } else {
                         console.log("no");
                     }

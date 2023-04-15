@@ -2,7 +2,7 @@
 include "../partials/db.php";
 $id = $_GET['pId'];
 
-$sql = "SELECT product.*, product_image.path imagePath FROM `product` join product_image WHERE product_image.product_id = $id";
+$sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product_image.product_id = $id";
 $result = mysqli_query($conn, $sql);
 session_start();
 $user = $_SESSION['username'];
@@ -158,7 +158,7 @@ $row = mysqli_fetch_assoc($result);
 	
     <div class="row container-fluid">
         <div class="col-lg-6 col-sm-6">
-            <img src=<?php echo $row['imagePath'] ?> width="400px">
+            <img src=<?php echo $row['path'] ?> width="400px">
         </div>
         <div class="col-lg-6 col-sm-6">
             <h6><?php echo $row['catogary']; ?></h6>

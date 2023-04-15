@@ -25,7 +25,7 @@ if (!isset($_SESSION['loggedin'])) {
   <style>
 body {
         height: 100vh;
-        width: 100rem;
+        /* width: 100rem; */
         background-color: red; /* For browsers that do not support gradients */
         /* background-image: linear-gradient(to right, #ee7752, #e73c7e, #9581F4, #23a6d5, #23d5ab); */
         background-image: linear-gradient(to right, #8ED081, #F4D35E, #EE964B, #F95738);

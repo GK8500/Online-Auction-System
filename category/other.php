@@ -31,7 +31,7 @@ if(!isset($_SESSION['loggedin'])){
 
         <?php
 
-        $sql = "SELECT * FROM product WHERE catogary = 'others'";
+        $sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.catogary = 'others'";
         $result = mysqli_query($conn,$sql);
 
         while($row = mysqli_fetch_assoc($result)){
@@ -40,7 +40,7 @@ if(!isset($_SESSION['loggedin'])){
 
 
             <div class="card sm-2" style="max-width: 540px; margin: 20px 20px; left: 10px;color: black; border: 1px solid black;">
-                <img class="card-img-top" src="../seller/uploads/test.jpg" alt="Card image cap" style="height:200px; width:250px; border: 10px solid black">
+            <center><img src=<?php echo $row['path'] ?> width="400px"></center>
                 <div class='card-body'>
                     <u> <h5 class='card-title'> <?php echo $row['name']; ?> </h5></u>
                     <p class='card-text'><?php echo $row['description']; ?></p>

@@ -31,7 +31,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="../category/applainces.php">Appliances</a></li>
-                    <li><a class="dropdown-item" href="../category/decor.html">Home Decor</a></li>
+                    <li><a class="dropdown-item" href="../category/decor.php">Home Decor</a></li>
                     <li><a class="dropdown-item" href="../category/electronics.php">Electronics</a></li>
                     <li><a class="dropdown-item" href="../category/fashion.php">Fashion</a></li>
                     <li><a class="dropdown-item" href="../category/watches.php">Watches</a></li>
@@ -46,9 +46,7 @@
                 <a class="nav-link" href="../seller/product_registration.php">Sell</a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="../buyer/about.php">About Us</a>
-            </li>
+            
 
             <div class="float-right" style="text-align:right">
                 <li class="nav-item">
@@ -59,6 +57,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../buyer/logout.php">Logout</a>
                 </li>
+            </div>
+            <div>
+                <li class="nav-item">
+                <a class="nav-link" href="../buyer/about.php">About Us</a>
+            </li>
             </div>
         </ul>
     </div>

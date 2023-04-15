@@ -6,7 +6,7 @@ session_start();
 
 if (!isset($_SESSION['loggedin'])) {
 
-    header('location: C:\xampp\htdocs\AuctionSystem\buyer\login_1.php');
+    header('location: ../buyer/login_1.php');
     exit;
 }
 
@@ -91,7 +91,7 @@ if (!isset($_SESSION['loggedin'])) {
     </header>
     <?php
 
-    $sql = "SELECT * FROM product WHERE catogary = 'appliances'";
+    $sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.catogary ='appliances'";
     $result = mysqli_query($conn, $sql);
 
     while ($row = mysqli_fetch_assoc($result)) {
@@ -100,7 +100,7 @@ if (!isset($_SESSION['loggedin'])) {
         <main>
             <section class="product-grid" >
                 <article style="background-color: #333; color: white; border-radius: 10px; border-color: #000000; padding: 10px 10px 10px 10px;">
-                   <center> <img class="card-img-top" src="../seller/uploads/test.jpg" alt="Card image cap" style="height:200px; width:464px; border: 10px solid black"> </center>
+                   <center> <img src=<?php echo $row['path'] ?> width="400px"> </center>
                     <h2><?php echo $row['name']; ?></h2>
                     <p><?php echo $row['description']; ?></p>
                     <p>Rs <?php echo $row['msp']; ?> </p>

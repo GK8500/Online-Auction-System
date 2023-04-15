@@ -6,7 +6,7 @@ session_start();
 
 if (!isset($_SESSION['loggedin'])) {
 
-	header('location: ../buyer/login_1.php');
+	header('location: C:\xampp\htdocs\AuctionSystem\buyer\login_1.php');
 	exit;
 }
 
@@ -16,7 +16,7 @@ if (!isset($_SESSION['loggedin'])) {
 
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="bg.css">
+
 <head>
 	<title>Vehicle Category Page</title>
 	<style>
@@ -69,8 +69,6 @@ if (!isset($_SESSION['loggedin'])) {
 		}
 
 		.card:hover {
-            background-color: #585858;
-            color: #fff;
 			transform: translateY(-5px);
 		}
 
@@ -100,11 +98,6 @@ if (!isset($_SESSION['loggedin'])) {
 			font-weight: bold;
 			color: #008000;
 		}
-		.card-price:hover {
-			font-size: 24px;
-			font-weight: bold;
-			color: #ffffff;
-		}
 
 		.card-location {
 			font-size: 16px;
@@ -117,20 +110,19 @@ if (!isset($_SESSION['loggedin'])) {
 
 <body>
 	<?php
-    include "../partials/_navbar.php";
 
-	$sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.catogary = 'cars&bikes'";
+	$sql = "SELECT * FROM product WHERE catogary = 'cars&bikes'";
 	$result = mysqli_query($conn, $sql);
 
 	while ($row = mysqli_fetch_assoc($result)) {
 		$id = $row['id'];
 	?>
 		<div class="container">
-			<h1 style="padding-top: 40px;">Vehicles</h1>
+			<h1>Vehicles</h1>
 			<div class="row">
 				<div class="col">
 					<div class="card">
-					<center><img src=<?php echo $row['path'] ?> width="400px"></center>
+						<img class="card-img-top" src="../seller/uploads/test.jpg" alt="Card image cap" style="height:200px; width:464px; border: 10px solid black">
 						<div class="card-body">
 							<div class="card-title"><?php echo $row['name']; ?></div>
 							<div class="card-text"><?php echo $row['description']; ?></div>
@@ -168,7 +160,3 @@ if (!isset($_SESSION['loggedin'])) {
 			<?php
 		}
 			?>
-
-            </div>
-</body>
-</html>

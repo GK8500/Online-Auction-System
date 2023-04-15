@@ -30,7 +30,7 @@
                     </a>
                     <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="../category/applainces.php">Appliances</a></li>
-                    <li><a class="dropdown-item" href="../category/decor.html">Home Decor</a></li>
+                    <li><a class="dropdown-item" href="../category/decor.php">Home Decor</a></li>
                     <li><a class="dropdown-item" href="../category/electronics.php">Electronics</a></li>
                     <li><a class="dropdown-item" href="../category/fashion.php">Fashion</a></li>
                     <li><a class="dropdown-item" href="../category/watches.php">Watches</a></li>
