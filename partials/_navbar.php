@@ -42,9 +42,9 @@
 <!--                    -->
                 </ul>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="../seller/product_registration.php">Sell</a>
-            </li>
+            </li> -->
 
             
 

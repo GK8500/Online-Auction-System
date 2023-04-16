@@ -47,7 +47,7 @@ body {
       width: 20%;
       padding: 5px 5px 5px 5px;
       margin-left: 30px;
-      margin-top: 50px;
+      margin-top: 100px;
     }
 
     img {
@@ -86,68 +86,7 @@ body {
 
     }
 
-* {box-sizing: border-box;}
-body {font-family: Verdana, sans-serif;}
-.mySlides {display: none;}
-img {vertical-align: middle;}
 
-/* Slideshow container */
-.slideshow-container {
-  width: 100%;
-  position: relative;
-  margin: auto;
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
-}
 </style>
 
 </head>
@@ -184,7 +123,7 @@ img {vertical-align: middle;}
       <span class="visually-hidden">Next</span>
     </button>
   </div> -->
-
+<!-- 
   <div class="slideshow-container">
 
     <div class="mySlides fade">
@@ -207,13 +146,13 @@ img {vertical-align: middle;}
     
     </div>
     <br>
-    
+     -->
   
 
   <?php
 
   $sql = "SELECT product.*, product_image.path imagepath, product_image.sortorder pic_no FROM product left join product_image on product.id = product_image.product_id";
-  $result = mysqli_query($conn, $sql);
+   $result = mysqli_query($conn, $sql);
 
   $num = mysqli_num_rows($result);
 
