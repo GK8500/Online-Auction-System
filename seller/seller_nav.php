@@ -31,8 +31,8 @@
              ?>
             <div class="float-right" style="text-align:right">
                 <li class="nav-item">
-                    <a class="nav-link" href="../seller/signup.php" >Sign Up</a>
-                </li>
+                <a class="nav-link" href="../seller/product_registration.php">Sell</a>
+            </li>
 
             <?php } ?>
             </div><div class="float-right" style="text-align:right">

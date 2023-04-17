@@ -2,7 +2,7 @@
 include "../partials/db.php";
 $id = $_GET['pId'];
 
-$sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product_image.product_id = $id";
+$sql = "SELECT * FROM `product` where `id` = $id";
 $result = mysqli_query($conn, $sql);
 session_start();
 $user = $_SESSION['username'];
@@ -12,6 +12,8 @@ if (!isset($_SESSION['loggedin'])) {
     exit;
 }
 $row = mysqli_fetch_assoc($result);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -92,6 +94,7 @@ $row = mysqli_fetch_assoc($result);
             -webkit-transition: 0.3s;
             transition: 0.3s;
             width: 235px;
+            height: 350px;
             margin: 15px 7.5px;
         }
 
@@ -175,7 +178,7 @@ $row = mysqli_fetch_assoc($result);
             </div>
             <hr>
             <form action="product_display.php?pId=<?php echo $id; ?>" method="POST">
-                <span style="padding-right: 6px;"><input name="price" required="required" type="number"></span>
+                <span style="padding-right: 6px;"><input name="price" required="required" type="number" style="border: 10px solid #7326df; border-radius: 10px; background-color: #7326df;"></span>
                 <?PHP
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $price = $_POST['price'];
@@ -194,8 +197,9 @@ $row = mysqli_fetch_assoc($result);
                 }
                 ?>
 
+                
 
-                <input type="submit" class="btn btn-success" value="Bid"></input>
+                <input type="submit" class="btn btn-success" value="Bid" ></input>
 
 
             </form>
@@ -236,10 +240,13 @@ $row = mysqli_fetch_assoc($result);
     <div id="cards-container">
       <div class="cards">
         <div class="card">
-          <img src="img src=<?php echo $row['imagePath'] ?>" alt="Animals" style="width:100%">
+          <div>
+        <center><img src=<?php echo $row['path'] ?> class='card-img-top' alt='' style='height:auto;'></center>
+          </div>
+          <br>
           <div class="container">
             <h4>
-              <b><?php echo $row['name']; ?></b>
+            <a href="../category/<?php echo $cat ?>.php"><?php echo $row['name']; ?></a>
             </h4>
           </div>
         </div>

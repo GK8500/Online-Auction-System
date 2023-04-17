@@ -25,7 +25,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username;
-                $_SESSION['user_id'] = $row['id'];
+                // $_SESSION['user_id'] = $row['id'];
+                $seller_id =  $row['id'];
+                $_SESSION['id'] = $seller_id;
+                echo $seller_id;
 
 
                 // reroute the page to home page

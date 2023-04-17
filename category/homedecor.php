@@ -6,10 +6,10 @@ session_start();
 
 if(!isset($_SESSION['loggedin'])){
 
-    header('location: C:\xampp\htdocs\AuctionSystem\buyer\login_1.php');
+    header('location: ../buyer/login_1.php');
     exit;
 }
-
+include "../partials/_navbar.php";
 ?>
 
 
@@ -18,7 +18,8 @@ if(!isset($_SESSION['loggedin'])){
 <html>
   <head>
     <title>Home Decor Category</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="bg.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   </head>
   <style>
     /* Global styles */
@@ -105,24 +106,24 @@ h2 {
 
   </style>
   <body>
-    <header>
+    <header style="margin-top:56px;">
       <h1>Home Decor Category</h1>
     </header>
     <main>
       
-      <section class="items">
+      <section class="items" >
         <h2>Home Decor Items for Sale</h2>
-        <div class="item">
+        <div class="item" style="border: 2.5px solid black; border-radius:10px; padding: 10px 10px 10px 10px;">
           <?php
 
-          $sql = "SELECT * FROM product WHERE catogary = 'homedecor'";
+          $sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.catogary = 'homedecor'";
           $result = mysqli_query($conn,$sql);
   
           while($row = mysqli_fetch_assoc($result)){
               $id = $row['id'];
               ?>
   
-          <img class="card-img-top" src="../seller/uploads/test.jpg" alt="Card image cap" style="height:200px; width:250px; border: 10px solid black">
+          <center><img src=<?php echo $row['path'] ?> width="400px"></center>
           <h3> <?php echo $row['name']; ?> </h3>
           <p><?php echo $row['description']; ?></p>
           <p>Rs <?php echo $row['msp']; ?></p>
@@ -166,8 +167,10 @@ h2 {
         
       </section>
     </main>
-    <footer style="background-color: #333; padding: 10px 10px 10px 10px;">
+    <footer style="background-color: #333; padding: 10px 10px 10px 10px; color:#fff">
       <p>&copy; 2023 Auction, Inc.</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   </body>
 </html>

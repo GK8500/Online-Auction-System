@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedin'])) {
     header('location: ../buyer/login_1.php');
     exit;
 }
-
+include "../partials/_navbar.php";
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +86,7 @@ if (!isset($_SESSION['loggedin'])) {
 </style>
 
 <body>
-    <header>
+    <header style="margin-top:56px;">
         <h1>Home Appliances</h1>
     </header>
     <?php
@@ -142,7 +142,6 @@ if (!isset($_SESSION['loggedin'])) {
             </section>
         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
         <footer style="background-color: #333; padding: 10px 10px 10px 10px; color: #fff;">
             <p>&copy; 2023 Home Appliances</p>
         </footer>

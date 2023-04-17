@@ -11,7 +11,11 @@
         // Seller ID needs to be inserted in the product table as well
         // Use $_SESSION['username']
 
+        $filename = $_FILES["upload"]["name"];
+        $tempname = $_FILES["upload"]["tmp_name"];
 
+        $folder = "../seller/uploads/" . $filename;
+        move_uploaded_file($tempname, $folder);
 
         $name = $_POST['name'];
         $desc = $_POST['desc'];
@@ -19,10 +23,12 @@
         $category = $_POST['category'];
         $start = $_POST['starttime'];
         $end = $_POST['endtime'];
-        $seller = $_SESSION['user_id'];
 
-        $sql = "INSERT INTO `product` (`id`,`sold_by` ,`name`, `description`, `msp`, `catogary`, `bidstart`, `bidend`, `status`) VALUES (NULL, '$seller' ,'$name', '$desc', '$price', '$category', '$start', '$end', 'LISTED')";
+        $sql = "INSERT INTO `product` (`sold_by` ,`name`, `description`, `msp`, `catogary`, `bidstart`, `bidend`, `status`, `path`) VALUES ('$seller' ,'$name', '$desc', '$price', '$category', '$start', '$end', 'not started', '$folder')";
+        // var_dump($sql);
         $result = mysqli_query($conn,$sql);
+        
+          
         if($result){
             echo '
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -70,13 +76,13 @@
 
 <body>
 <?php
-include "seller_nav.php";
+// include "seller_nav.php";
 ?>
 
 <div class="containers" style="display: flex; justify-content: center; margin-top:100px">
 
 
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" autocapitalize="on" autocomplete="on" method="POST">
+    <form action="" autocapitalize="on" autocomplete="on" method="POST" enctype="multipart/form-data">
     <div class="item">
         <h1 style="text-align: center; padding: 15px"> PRODUCT REGISTRATION</h1>
         <hr>
@@ -102,7 +108,7 @@ include "seller_nav.php";
                     Put images for your product
                 </th>
                 <td>
-                    <input multiple="multiple" name="img" required="required" type="file">
+                    <input multiple="multiple" name="upload" required="required" type="file">
                 </td>
             </tr>
             <tr>
@@ -140,6 +146,12 @@ include "seller_nav.php";
     </div>
     </form>
 </div>
+
+<?php 
+
+
+
+?>
 </body>
 </html>
 

@@ -6,10 +6,10 @@ session_start();
 
 if(!isset($_SESSION['loggedin'])){
 
-    header('location: ../buyer/login_1.php');
+    header('location: C:\xampp\htdocs\AuctionSystem\buyer\login_1.php');
     exit;
 }
-
+include "../partials/_navbar.php";
 ?>
 
 
@@ -17,8 +17,6 @@ if(!isset($_SESSION['loggedin'])){
 <html>
 <head>
 	<title>Fashion Category Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="bg.css">
 	<style>
 		body {
 			font-family: Arial, sans-serif;
@@ -104,21 +102,23 @@ if(!isset($_SESSION['loggedin'])){
 		}
 	</style>
 </head>
+<link rel="stylesheet" href="bg.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 <body>
-	<header>
+	<header style="margin-top:56px;">
 		<h1>Fashion Category</h1>
 	</header>
 	<div class="container">
 		<div class="item">
-	<?php
+			<?php
 
-        $sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.catogary = 'fashion'";
+        $sql = "SELECT * FROM product WHERE catogary = 'fashion'";
         $result = mysqli_query($conn,$sql);
 
         while($row = mysqli_fetch_assoc($result)){
             $id = $row['id'];
             ?>
-			<img src=<?php echo $row['path'] ?> width="400px">
+			<img class="card-img-top" src="../seller/uploads/test.jpg" alt="Card image cap" style="height:200px; width:250px; border: 10px solid black">
 			<h2><?php echo $row['name']; ?></h2>
 			<p><?php echo $row['description']; ?></p>
 			<p><?php echo $row['msp']; ?></p>
@@ -154,12 +154,12 @@ if(!isset($_SESSION['loggedin'])){
                     <?php } ?>
                 </div>
             </div>
-
+		</div>
             <?php
         }
         ?>
 
-    </div>
+
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedin'])) {
 	header('location: C:\xampp\htdocs\AuctionSystem\buyer\login_1.php');
 	exit;
 }
-
+include "../partials/_navbar.php";
 ?>
 
 
@@ -116,7 +116,12 @@ if (!isset($_SESSION['loggedin'])) {
 </head>
 
 <body>
-	<?php
+
+		<div class="container" >
+			<h1 style="padding-top: 40px;">Electronics</h1>
+			<div class="row">
+				<div class="col">
+			<?php
     include "../partials/_navbar.php";
 
 	$sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.catogary = 'electronics'";
@@ -125,10 +130,6 @@ if (!isset($_SESSION['loggedin'])) {
 	while ($row = mysqli_fetch_assoc($result)) {
 		$id = $row['id'];
 	?>
-		<div class="container">
-			<h1 style="padding-top: 40px;">Electronics</h1>
-			<div class="row">
-				<div class="col">
 					<div class="card">
 					<center><img src=<?php echo $row['path'] ?> width="400px"></center>
 						<div class="card-body">

@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedin'])) {
   header('location: ../buyer/login_1.php');
   exit;
 }
-
+include "../partials/_navbar.php";
 ?>
 
 
@@ -142,7 +142,7 @@ if (!isset($_SESSION['loggedin'])) {
 </style>
 
 <body>
-  <header style="background-color: #333;">
+  <header style="background-color: #333; margin-top:56px;">
     <h1 style="color: #ddd;">Coins Category</h1>
     <nav>
       <ul>

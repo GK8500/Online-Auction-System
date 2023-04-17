@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedin'])) {
 	header('location: ../buyer/login_1.php');
 	exit;
 }
-
+include "../partials/_navbar.php";
 ?>
 
 

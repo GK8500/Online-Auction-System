@@ -31,7 +31,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="../category/applainces.php">Appliances</a></li>
-                    <li><a class="dropdown-item" href="../category/decor.php">Home Decor</a></li>
+                    <li><a class="dropdown-item" href="../category/homedecor.php">Home Decor</a></li>
                     <li><a class="dropdown-item" href="../category/electronics.php">Electronics</a></li>
                     <li><a class="dropdown-item" href="../category/fashion.php">Fashion</a></li>
                     <li><a class="dropdown-item" href="../category/watches.php">Watches</a></li>
@@ -47,10 +47,17 @@
             </li> -->
 
             
-
+        <?php if (!isset($_SESSION['loggedin'])) {
+ ?>
             <div class="float-right" style="text-align:right">
                 <li class="nav-item">
                     <a class="nav-link" href="../buyer/login_1.php">Sign In</a>
+                </li>
+            </div>
+            <?php } else{ ?>
+                <div class="float-left" style="text-align:left">
+                <li class="nav-item">
+                    <a class="nav-link" href="../buyer/myBids.php">My Bids</a>
                 </li>
             </div>
             <div class="float-right" style="text-align:right">
@@ -58,12 +65,19 @@
                     <a class="nav-link" href="../buyer/logout.php">Logout</a>
                 </li>
             </div>
+            
+            <?php } ?>
             <div>
                 <li class="nav-item">
                 <a class="nav-link" href="../buyer/about.php">About Us</a>
             </li>
             </div>
         </ul>
+    </div>
+    <div style="color: aliceblue;">
+        <?php if(isset($_SESSION['loggedin'])){
+        echo "Welcome ".$_SESSION['username'];
+        }?>
     </div>
 </nav>
 

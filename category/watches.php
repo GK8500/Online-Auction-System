@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedin'])) {
     header('location: ../buyer/login_1.php');
     exit;
 }
-
+include "../partials/_navbar.php";
 ?>
 
 
@@ -136,7 +136,7 @@ if (!isset($_SESSION['loggedin'])) {
 </head>
 
 <body>
-    <header>
+    <header style="margin-top:56px;">
         <h1>Watches Category</h1>
     </header>
 

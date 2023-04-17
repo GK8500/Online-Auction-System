@@ -93,13 +93,12 @@ include "../partials/_navbar.php";
         echo"<br>";
         echo"<br>";
     $usernames =  $_SESSION['username'];
-    echo "";
   ?>
 
 
 
     <?php
-  $sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.username ='$usernames'";
+  $sql = "SELECT * FROM `product` where product.username ='$usernames'";
   $result = mysqli_query($conn, $sql);
 
   $num = mysqli_num_rows($result);
