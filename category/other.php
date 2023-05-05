@@ -31,7 +31,7 @@ if(!isset($_SESSION['loggedin'])){
 
         <?php
 
-        $sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.catogary = 'others'";
+        $sql = "SELECT * FROM `product` where product.catogary = 'others'";
         $result = mysqli_query($conn,$sql);
 
         while($row = mysqli_fetch_assoc($result)){

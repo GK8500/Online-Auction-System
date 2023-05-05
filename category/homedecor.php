@@ -116,7 +116,7 @@ h2 {
         <div class="item" style="border: 2.5px solid black; border-radius:10px; padding: 10px 10px 10px 10px;">
           <?php
 
-          $sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.catogary = 'homedecor'";
+          $sql = "SELECT * FROM `product` where product.catogary = 'homedecor'";
           $result = mysqli_query($conn,$sql);
   
           while($row = mysqli_fetch_assoc($result)){

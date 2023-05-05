@@ -101,7 +101,7 @@ include "../seller/seller_nav.php";
 
     <?php
 	
-  $sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.sold_by = '$seller_id'";
+  $sql = "SELECT * FROM `product` where product.sold_by = '$seller_id'";
   $result = mysqli_query($conn, $sql);
 
   $num = mysqli_num_rows($result);
@@ -113,8 +113,7 @@ include "../seller/seller_nav.php";
   ?>
 
       <?php
-      // check if the product has already been displayed
-      if ($row['sortorder'] == 1) {
+      
 
         // if image path is given
 
@@ -172,14 +171,14 @@ include "../seller/seller_nav.php";
               $sql_status = "UPDATE `product` SET `status` = 'sold' WHERE `product`.`id` = $id";  // updating status
               $result_status = mysqli_query($conn, $sql);
             ?>
-              <a href='product_display.php?pId=<?php echo $row['id']; ?>' class='btn btn-success '>You Won</a>  
+              <a href='../buyer/product_display.php?pId=<?php echo $row['id'];?>' class='btn btn-success '>Open</a>  
             <?php } ?>
           </div>
           
     <?php
       }
     }
-  }
+  
     ?>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> -->
 </body>

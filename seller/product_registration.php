@@ -6,6 +6,7 @@
         header("location: login.php");
         exit;
     }
+    
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         // Seller ID needs to be inserted in the product table as well
@@ -24,7 +25,7 @@
         $start = $_POST['starttime'];
         $end = $_POST['endtime'];
 
-        $sql = "INSERT INTO `product` (`sold_by` ,`name`, `description`, `msp`, `catogary`, `bidstart`, `bidend`, `status`, `path`) VALUES ('$seller' ,'$name', '$desc', '$price', '$category', '$start', '$end', 'not started', '$folder')";
+        $sql = "INSERT INTO `product` (`sold_by` ,`name`, `description`, `msp`, `catogary`, `bidstart`, `bidend`, `status`, `path`) VALUES (2 ,'$name', '$desc', '$price', 'fashion', '$start', '$end', 'not started', '$folder')";
         // var_dump($sql);
         $result = mysqli_query($conn,$sql);
         
@@ -37,6 +38,7 @@
                 </div>';
         }
     }
+    include "../seller/seller_nav.php"
 ?>
 
 <!DOCTYPE html>

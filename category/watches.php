@@ -143,7 +143,7 @@ include "../partials/_navbar.php";
     <main>
         <?php
 
-        $sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.catogary = 'watches'";
+        $sql = "SELECT * FROM `product` where product.catogary = 'watches'";
         $result = mysqli_query($conn, $sql);
 
         while ($row = mysqli_fetch_assoc($result)) {

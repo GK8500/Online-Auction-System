@@ -91,7 +91,7 @@ include "../partials/_navbar.php";
     </header>
     <?php
 
-    $sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.catogary ='appliances'";
+    $sql = "SELECT * FROM `product` where catogary ='appliances'";
     $result = mysqli_query($conn, $sql);
 
     while ($row = mysqli_fetch_assoc($result)) {
@@ -142,9 +142,7 @@ include "../partials/_navbar.php";
             </section>
         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-        <footer style="background-color: #333; padding: 10px 10px 10px 10px; color: #fff;">
-            <p>&copy; 2023 Home Appliances</p>
-        </footer>
+        
 
         
 </body>

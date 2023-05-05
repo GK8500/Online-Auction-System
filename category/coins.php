@@ -156,7 +156,7 @@ include "../partials/_navbar.php";
       <h2>Coins for Sale</h2>
       <?php
 
-      $sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.catogary = 'coins'";
+      $sql = "SELECT * FROM `product` where product.catogary = 'coins'";
       $result = mysqli_query($conn, $sql);
 
       while ($row = mysqli_fetch_assoc($result)) {

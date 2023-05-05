@@ -93,12 +93,13 @@ include "../partials/_navbar.php";
         echo"<br>";
         echo"<br>";
     $usernames =  $_SESSION['username'];
+    // echo $username;
   ?>
 
 
 
     <?php
-  $sql = "SELECT * FROM `product` where product.username ='$usernames'";
+  $sql = "SELECT * FROM `product` where username ='$usernames'";
   $result = mysqli_query($conn, $sql);
 
   $num = mysqli_num_rows($result);
@@ -111,7 +112,7 @@ include "../partials/_navbar.php";
 
       <?php
       // check if the product has already been displayed
-      if ($row['sortorder'] == 1) {
+      
 
         // if image path is given
 
@@ -176,7 +177,7 @@ include "../partials/_navbar.php";
     <?php
       }
     }
-  }
+  
     ?>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> -->
 </body>

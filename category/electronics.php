@@ -124,7 +124,7 @@ include "../partials/_navbar.php";
 			<?php
     include "../partials/_navbar.php";
 
-	$sql = "SELECT * FROM `product` join product_image on product.id = product_image.product_id where product.catogary = 'electronics'";
+	$sql = "SELECT * FROM `product` where product.catogary = 'electronics'";
 	$result = mysqli_query($conn, $sql);
 
 	while ($row = mysqli_fetch_assoc($result)) {
