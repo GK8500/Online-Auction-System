@@ -153,23 +153,7 @@ include "../seller/seller_nav.php";
             $today = date("Y-m-d");    // today's date
             $bidday = $row['bidstart'];      // check if the date to start the bid has arrived
             $bidend = $row['bidend'];        // check if the date to end the bid has arrived
-
-
-            if ($today < $bidday) {
-              $sql_status = "UPDATE `product` SET `status` = 'not started' WHERE `product`.`id` = $id";        // updating status
-              $result_status = mysqli_query($conn, $sql);
-            ?>
-              <a href='#' class='btn btn-primary disabled'>Bid Not Started Yet</a>
-
-            <?php } else if ($today >= $bidday && $today < $bidend) {
-              $sql_status = "UPDATE `product` SET `status` = 'on sale' WHERE `product`.`id` = $id";        // updating status
-              $result_status = mysqli_query($conn, $sql);
-            ?>
-              <a href='product_display.php?pId=<?php echo $row['id']; ?>' < class='btn btn-primary'>BID</a>
-            <?php
-            } else if ($today > $bidend) {
-              $sql_status = "UPDATE `product` SET `status` = 'sold' WHERE `product`.`id` = $id";  // updating status
-              $result_status = mysqli_query($conn, $sql);
+            {
             ?>
               <a href='../buyer/product_display.php?pId=<?php echo $row['id'];?>' class='btn btn-success '>Open</a>  
             <?php } ?>

@@ -25,8 +25,8 @@
         $start = $_POST['starttime'];
         $end = $_POST['endtime'];
 
-        $sql = "INSERT INTO `product` (`sold_by` ,`name`, `description`, `msp`, `catogary`, `bidstart`, `bidend`, `status`, `path`) VALUES (2 ,'$name', '$desc', '$price', 'fashion', '$start', '$end', 'not started', '$folder')";
-        // var_dump($sql);
+        // $sql = "INSERT INTO `product` (`id`,`sold_by` , `name`, `description`, `msp`, `catogary`, `bidstart`, `bidend`, `username` ,`status`, `path`) VALUES (NULL, 2 ,'$name', '$desc', '$price', 'fashion', '$start', '$end', '' , 'not started', '$folder')";
+        $sql = "INSERT INTO `product` (`id`,`sold_by` , `name`, `description`, `msp`, `catogary`, `bidstart`, `bidend`, `username`, `status`, `path`) VALUES (NULL, '2', '$name', '$desc', '$price', '$category', '$start', '$end', '', 'not started', '$folder')";      
         $result = mysqli_query($conn,$sql);
         
           
@@ -84,7 +84,7 @@
 <div class="containers" style="display: flex; justify-content: center; margin-top:100px">
 
 
-    <form action="" autocapitalize="on" autocomplete="on" method="POST" enctype="multipart/form-data">
+    <form action="../seller/product_registration.php" autocapitalize="on" autocomplete="on" method="POST" enctype="multipart/form-data">
     <div class="item">
         <h1 style="text-align: center; padding: 15px"> PRODUCT REGISTRATION</h1>
         <hr>
@@ -121,14 +121,15 @@
                 <th>Choose a category for your product:</th>
                 <td>
                     <select id="categories" name="category">
-                      <option value="Appliances">Home Appliances</option>
-                      <option value="Shoes">Fashion</option>
-                      <option value="Cars">Vehicals</option>
-                      <option value="Bikes">Jwellery</option>
+                      <option value="appliances">Home Appliances</option>
+                      <option value="homedecor">Home Decor</option>
+                      <option value="Electronics">Laptop/Mobile Phones/Watches</option>
+                      <option value="fashion">Fashion</option>
+                      <option value="watches">Watches</option>
+                      <option value="cars&bikes">Vehicals</option>
                       <option value="Coins">Coins & Currency</option>
-                      <option value="Decor">Home Decor</option>
-                      <option value="Gadgets">Laptop/Mobile Phones/Watches</option>
                       <option value="others">others</option>
+                      
                     </select></td>
             </tr>
             <tr>
@@ -148,12 +149,7 @@
     </div>
     </form>
 </div>
-
-<?php 
-
-
-
-?>
+z
 </body>
 </html>
 

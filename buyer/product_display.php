@@ -3,6 +3,9 @@ include "../partials/db.php";
 $id = $_GET['pId'];
 
 $sql = "SELECT * FROM `product` where `id` = $id";
+
+// SELECT * FROM `product`, table1 where `id` = $id LIMIT 5;
+
 $result = mysqli_query($conn, $sql);
 session_start();
 $user = $_SESSION['username'];
@@ -171,8 +174,12 @@ $row = mysqli_fetch_assoc($result);
 
             <hr>
 
+            <div class="prev_bid">
+              <p>Previous Bids : </p>
+            </div>
+            <hr>
             <div class="cable">
-                <p>Current Bid</p>
+                <p>Current Bid : </p>
                 <button type="button" class="bid-view"  style=""><?php echo $row['msp']; ?></button>
 
             </div>
@@ -261,6 +268,9 @@ $row = mysqli_fetch_assoc($result);
     </div>
 
   </div>
+
+
+
 
 <script> 
 
